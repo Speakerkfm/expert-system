@@ -28,5 +28,9 @@ namespace ExpertSystem
 
             this.Close();
         }
+
+        private void ExpertSystemCreator_Deactivate(object sender, EventArgs e)
+        {
+        }
     }
 }

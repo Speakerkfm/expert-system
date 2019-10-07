@@ -17,9 +17,26 @@ namespace ExpertSystem.service
             this.dataContainer = dataContainer;
         }
 
+        public List<CurrentExpertSystem> GetExpertSystems()
+        {
+            return dataContainer.Store.GetExpertSystem();
+        }
+
         public void CreateExpertSystem(string name)
         {
             dataContainer.ExpertSystem = dataContainer.Store.CreateExpertSystem(name);
+        }
+
+        public void SelectExpertSystem(CurrentExpertSystem expertSystem)
+        {
+            LoadExpertSystem(expertSystem);
+            dataContainer.ExpertSystem = expertSystem;
+        }
+
+        private void LoadExpertSystem(CurrentExpertSystem expertSystem)
+        {
+            expertSystem.Variables = dataContainer.Store.GetVariables(expertSystem.Id);
+            expertSystem.Domains = dataContainer.Store.GetDomains(expertSystem.Id);
         }
     }
 }

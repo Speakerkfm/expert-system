@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExpertSystem.entity;
 
 namespace ExpertSystem.model
 {
@@ -11,8 +12,8 @@ namespace ExpertSystem.model
         private int id;
         private int number;
         private string name;
-        private List<RuleCondition> conditions;
-        private List<RuleResult> results;
+        private List<Fact> conditions;
+        private List<Fact> results;
 
     }
 }

@@ -58,6 +58,7 @@
             this.Controls.Add(this.tbESName);
             this.Name = "ExpertSystemCreator";
             this.Text = "ExpertSystemCreator";
+            this.Deactivate += new System.EventHandler(this.ExpertSystemCreator_Deactivate);
             this.ResumeLayout(false);
             this.PerformLayout();
 

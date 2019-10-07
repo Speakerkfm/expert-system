@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             this.headerMenu = new System.Windows.Forms.MenuStrip();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.expertSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expertSystemToolStripCreateES = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.expertSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.variablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.domainsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.headerMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -43,21 +46,13 @@
             // 
             this.headerMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.headerMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
             this.headerMenu.Location = new System.Drawing.Point(0, 0);
             this.headerMenu.Name = "headerMenu";
             this.headerMenu.Size = new System.Drawing.Size(1246, 42);
             this.headerMenu.TabIndex = 0;
             this.headerMenu.Text = "menuStrip1";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(127, 201);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(1049, 443);
-            this.dataGridView1.TabIndex = 1;
             // 
             // fileToolStripMenuItem
             // 
@@ -68,34 +63,67 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 38);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // openToolStripMenuItem
-            // 
-            this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.expertSystemToolStripMenuItem});
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
-            this.openToolStripMenuItem.Text = "Open";
-            // 
-            // expertSystemToolStripMenuItem
-            // 
-            this.expertSystemToolStripMenuItem.Name = "expertSystemToolStripMenuItem";
-            this.expertSystemToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
-            this.expertSystemToolStripMenuItem.Text = "Expert system";
-            // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.expertSystemToolStripCreateES});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(173, 38);
             this.newToolStripMenuItem.Text = "New";
             // 
             // expertSystemToolStripCreateES
             // 
             this.expertSystemToolStripCreateES.Name = "expertSystemToolStripCreateES";
-            this.expertSystemToolStripCreateES.Size = new System.Drawing.Size(268, 38);
+            this.expertSystemToolStripCreateES.Size = new System.Drawing.Size(261, 38);
             this.expertSystemToolStripCreateES.Text = "Expert system";
             this.expertSystemToolStripCreateES.Click += new System.EventHandler(this.expertSystemToolStripMenuItem1_Click);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.expertSystemToolStripMenuItem});
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(173, 38);
+            this.openToolStripMenuItem.Text = "Open";
+            // 
+            // expertSystemToolStripMenuItem
+            // 
+            this.expertSystemToolStripMenuItem.Name = "expertSystemToolStripMenuItem";
+            this.expertSystemToolStripMenuItem.Size = new System.Drawing.Size(261, 38);
+            this.expertSystemToolStripMenuItem.Text = "Expert system";
+            this.expertSystemToolStripMenuItem.Click += new System.EventHandler(this.expertSystemToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.variablesToolStripMenuItem,
+            this.domainsToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(67, 38);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // variablesToolStripMenuItem
+            // 
+            this.variablesToolStripMenuItem.Name = "variablesToolStripMenuItem";
+            this.variablesToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.variablesToolStripMenuItem.Text = "Variables";
+            this.variablesToolStripMenuItem.Click += new System.EventHandler(this.variablesToolStripMenuItem_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 78);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 33;
+            this.dataGridView1.Size = new System.Drawing.Size(995, 579);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // domainsToolStripMenuItem
+            // 
+            this.domainsToolStripMenuItem.Name = "domainsToolStripMenuItem";
+            this.domainsToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.domainsToolStripMenuItem.Text = "Domains";
+            this.domainsToolStripMenuItem.Click += new System.EventHandler(this.domainsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -124,6 +152,9 @@
         private System.Windows.Forms.ToolStripMenuItem expertSystemToolStripCreateES;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expertSystemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem variablesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem domainsToolStripMenuItem;
     }
 }
 

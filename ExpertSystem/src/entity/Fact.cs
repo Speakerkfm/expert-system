@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExpertSystem.model;
 
-namespace ExpertSystem.model
+namespace ExpertSystem.entity
 {
-    class RuleCondition
+    class Fact
     {
         private int id;
-        private Variable variable1;
-        private string type;
+        private Variable variable;
         private Value value;
-        private Variable variable2;
     }
 }

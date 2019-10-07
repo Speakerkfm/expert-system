@@ -8,13 +8,12 @@ namespace ExpertSystem.model
 {
     class Domain
     {
-        private int id;
-        private string name;
-        private string type;
-        private int number;
-        private List<Value> values;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public int Number { get; set; }
 
-        public int Id => id;
+        private List<Value> values;
         public List<Value> Values
         {
             get { return values; }
@@ -23,10 +22,10 @@ namespace ExpertSystem.model
 
         public Domain(int id, string name, string type, int number)
         {
-            this.id = id;
-            this.name = name;
-            this.type = type;
-            this.number = number;
+            this.Id = id;
+            this.Name = name;
+            this.Type = type;
+            this.Number = number;
         }
     }
 }

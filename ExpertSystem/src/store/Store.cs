@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using ExpertSystem.entity;
 using ExpertSystem.model;
 using MySql.Data.MySqlClient;
 
@@ -51,6 +52,33 @@ namespace ExpertSystem.store
 
             return new CurrentExpertSystem(id, name);
         }
+
+        public List<CurrentExpertSystem> GetExpertSystem()
+        {
+            List<CurrentExpertSystem> expetSystems = new List<CurrentExpertSystem>();
+             
+            string sql = "SELECT * FROM expert_system;";
+            MySqlCommand command = new MySqlCommand(sql, _conn);
+
+            command.ExecuteNonQuery();
+
+            MySqlDataReader rowReader = command.ExecuteReader();
+
+            while (rowReader.Read() && rowReader.HasRows)
+            {
+                int id = int.Parse(rowReader[0].ToString());
+                string name = rowReader[1].ToString();
+
+                CurrentExpertSystem expertSystem = new CurrentExpertSystem(id, name);
+
+                expetSystems.Add(expertSystem);
+            }
+            rowReader.Close();
+            
+
+            return expetSystems;
+        }
+
 
         public List<Value> GetValuesByDomainId(int domainId)
         {
@@ -197,6 +225,39 @@ namespace ExpertSystem.store
             }
 
             return variables;
+        }
+
+        public Fact GetFactByVariableValue(int variableId, int valueId)
+        {
+            string sql = "SELECT * FROM fact f " +
+                         "LEFT JOIN variable var ON f.variable_id=var.id" +
+                         "LEFT JOIN value val ON f.domain_value_id=val.id" +
+                         "WHERE f.variable_id=@variableId AND f.domain_value_id=@valueId;";
+            MySqlCommand command = new MySqlCommand(sql, _conn);
+            command.Parameters.AddWithValue("@variableId", variableId);
+            command.Parameters.AddWithValue("@valueId", valueId);
+
+            MySqlDataReader rowReader = command.ExecuteReader();
+
+            rowReader.Read();
+
+            if (!rowReader.HasRows)
+            {
+                return null;
+            }
+
+            int id = int.Parse(rowReader[0].ToString());
+            int number = int.Parse(rowReader[5].ToString());
+            string name = rowReader[6].ToString();
+            string type = rowReader[7].ToString();
+            int domainId = int.Parse(rowReader[8].ToString());
+            Variable variable = new Variable(variableId, name, number, type, domainId);
+
+            rowReader.Close();
+
+            Fact fact = new Fact();
+
+            return fact;
         }
     }
 }

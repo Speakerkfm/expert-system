@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using ExpertSystem.store;
 using ExpertSystem.model;
 using ExpertSystem.service;
+using ExpertSystem.src.service;
 
 namespace ExpertSystem
 {
@@ -48,10 +49,11 @@ namespace ExpertSystem
 
             //services
             ExpertSystemService expertSystemService = new ExpertSystemService(dataContainer);
+            VariableService variableService = new VariableService(dataContainer);
+            DomainService domainService = new DomainService(dataContainer);
 
             //forms
-            ExpertSystemCreator expertSystemCreator = new ExpertSystemCreator(expertSystemService);
-            MainForm mainForm = new MainForm(dataContainer, expertSystemCreator);
+            MainForm mainForm = new MainForm(expertSystemService, variableService, domainService);
 
             Application.Run(mainForm);
 
