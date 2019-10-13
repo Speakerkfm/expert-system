@@ -101,7 +101,7 @@ namespace ExpertSystem
 
         private void btRuleAdd_Click(object sender, EventArgs e)
         {
-            RuleForm ruleEditor = new RuleForm(_ruleService, _variableService, _factService);
+            RuleForm ruleEditor = new RuleForm(_ruleService, _variableService, _factService, _domainService);
             if (ruleEditor.ShowDialog() == DialogResult.OK)
             {
                 this.expertSystem.Rules.Add(ruleEditor.Rule);
@@ -114,7 +114,7 @@ namespace ExpertSystem
         private void btRuleEdit_Click(object sender, EventArgs e)
         {
             Rule selectedRule = Rules[lvRules.SelectedIndices[0]];
-            RuleForm ruleEditor = new RuleForm(selectedRule, _ruleService, _variableService, _factService);
+            RuleForm ruleEditor = new RuleForm(selectedRule, _ruleService, _variableService, _factService, _domainService);
             if (ruleEditor.ShowDialog() == DialogResult.OK)
             {
                 FillRulesLv();
@@ -122,7 +122,7 @@ namespace ExpertSystem
 
             ruleEditor.Dispose();
         }
-
+        
         private void btRuleDelete_Click(object sender, EventArgs e)
         {
             foreach (int index in lvRules.SelectedIndices)

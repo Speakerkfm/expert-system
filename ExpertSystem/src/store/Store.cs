@@ -93,7 +93,7 @@ namespace ExpertSystem.store
             while (rowReader.Read() && rowReader.HasRows)
             {
                 int id = int.Parse(rowReader[0].ToString());
-                int number = int.Parse(rowReader[1].ToString());
+                int number = int.Parse(rowReader[3].ToString());
                 string value = rowReader[2].ToString();
 
                 Value val = new Value(id, number, value);

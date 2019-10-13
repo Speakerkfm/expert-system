@@ -59,6 +59,7 @@
             // cbValue
             // 
             this.cbValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbValue.Enabled = false;
             this.cbValue.FormattingEnabled = true;
             this.cbValue.Location = new System.Drawing.Point(455, 110);
             this.cbValue.Name = "cbValue";
@@ -88,12 +89,14 @@
             // 
             // btVariableEdit
             // 
+            this.btVariableEdit.Enabled = false;
             this.btVariableEdit.Location = new System.Drawing.Point(235, 28);
             this.btVariableEdit.Name = "btVariableEdit";
             this.btVariableEdit.Size = new System.Drawing.Size(58, 61);
             this.btVariableEdit.TabIndex = 30;
             this.btVariableEdit.Text = "edit";
             this.btVariableEdit.UseVisualStyleBackColor = true;
+            this.btVariableEdit.Click += new System.EventHandler(this.btVariableEdit_Click);
             // 
             // btVariableAdd
             // 
@@ -103,6 +106,7 @@
             this.btVariableAdd.TabIndex = 28;
             this.btVariableAdd.Text = "+";
             this.btVariableAdd.UseVisualStyleBackColor = true;
+            this.btVariableAdd.Click += new System.EventHandler(this.btVariableAdd_Click);
             // 
             // FactForm
             // 
@@ -118,6 +122,7 @@
             this.Controls.Add(this.cbVariable);
             this.Name = "FactForm";
             this.Text = "FactForm";
+            this.Load += new System.EventHandler(this.FactForm_Load);
             this.ResumeLayout(false);
 
         }

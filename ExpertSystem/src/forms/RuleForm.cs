@@ -17,27 +17,30 @@ namespace ExpertSystem.src.forms
         private RuleService ruleService;
         private VariableService variableService;
         private FactService factService;
+        private DomainService domainService;
         public Rule Rule { get; set; }
 
         private List<Fact> conditions;
         private List<Fact> conclusions;
 
-        public RuleForm(RuleService ruleService, VariableService variableService, FactService factService)
+        public RuleForm(RuleService ruleService, VariableService variableService, FactService factService, DomainService domainService)
         {
             this.ruleService = ruleService;
             this.variableService = variableService;
             this.factService = factService;
+            this.domainService = domainService;
             this.conditions = new List<Fact>();
             this.conclusions = new List<Fact>();
 
             InitializeComponent();
         }
 
-        public RuleForm(Rule rule, RuleService ruleService, VariableService variableService, FactService factService)
+        public RuleForm(Rule rule, RuleService ruleService, VariableService variableService, FactService factService, DomainService domainService)
         {
             this.ruleService = ruleService;
             this.variableService = variableService;
             this.factService = factService;
+            this.domainService = domainService;
             this.Rule = rule;
             this.conclusions = new List<Fact>();
             this.conditions = new List<Fact>();
@@ -107,7 +110,7 @@ namespace ExpertSystem.src.forms
 
         private void btConditionAdd_Click(object sender, EventArgs e)
         {
-            FactForm factEditor = new FactForm(this.variableService, this.factService, FactType.Condition);
+            FactForm factEditor = new FactForm(this.variableService, this.factService, this.domainService, FactType.Condition);
             if (factEditor.ShowDialog(this) == DialogResult.OK)
             {
                 this.conditions.Add(factEditor.Fact);
@@ -122,9 +125,11 @@ namespace ExpertSystem.src.forms
             if (lvConditions.SelectedIndices.Count == 1)
             {
                 Fact selectedCondition = this.conditions[lvConditions.SelectedIndices[0]];
-                FactForm factEditor = new FactForm(selectedCondition, this.variableService, this.factService, FactType.Condition);
+                FactForm factEditor = new FactForm(selectedCondition, this.variableService, this.factService, this.domainService, FactType.Condition);
                 if (factEditor.ShowDialog(this) == DialogResult.OK)
                 {
+                    this.conditions.RemoveAt(lvConditions.SelectedIndices[0]);
+                    this.conditions.Add(factEditor.Fact);
                     FillConditionsLv();
                 }
 
@@ -143,7 +148,7 @@ namespace ExpertSystem.src.forms
 
         private void btConclusionAdd_Click(object sender, EventArgs e)
         {
-            FactForm factEditor = new FactForm(this.variableService, this.factService, FactType.Condition);
+            FactForm factEditor = new FactForm(this.variableService, this.factService, this.domainService, FactType.Condition);
             if (factEditor.ShowDialog(this) == DialogResult.OK)
             {
                 this.conclusions.Add(factEditor.Fact);
@@ -158,9 +163,11 @@ namespace ExpertSystem.src.forms
             if (lvConclusions.SelectedIndices.Count == 1)
             {
                 Fact selectedConclusion = this.conclusions[lvConclusions.SelectedIndices[0]];
-                FactForm factEditor = new FactForm(selectedConclusion, this.variableService, this.factService, FactType.Condition);
+                FactForm factEditor = new FactForm(selectedConclusion, this.variableService, this.factService, this.domainService, FactType.Condition);
                 if (factEditor.ShowDialog(this) == DialogResult.OK)
                 {
+                    this.conclusions.RemoveAt(lvConclusions.SelectedIndices[0]);
+                    this.conclusions.Add(factEditor.Fact);
                     FillConclusionsLv();
                 }
 

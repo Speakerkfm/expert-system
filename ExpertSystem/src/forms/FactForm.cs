@@ -26,12 +26,19 @@ namespace ExpertSystem.src.forms
 
         private VariableService variableService;
         private FactService factService;
+        private DomainService domainService;
+
+
         private Variable selectedVariable;
+        private Value selectedValue;
+
+        private bool loading = false;
         
-        public FactForm(VariableService variableService, FactService factService, FactType type)
+        public FactForm(VariableService variableService, FactService factService, DomainService domainService, FactType type)
         {
             this.variableService = variableService;
             this.factService = factService;
+            this.domainService = domainService;
             this.Type = type;
 
             InitializeComponent();
@@ -40,11 +47,14 @@ namespace ExpertSystem.src.forms
             FillVariableCb();
         }
 
-        public FactForm(Fact fact, VariableService variableService, FactService factService, FactType type)
+        public FactForm(Fact fact, VariableService variableService, FactService factService, DomainService domainService, FactType type)
         {
             this.Fact = fact;
+            selectedVariable = fact.Variable;
+            selectedValue = fact.Value;
             this.variableService = variableService;
             this.factService = factService;
+            this.domainService = domainService;
             this.Type = type;
 
             InitializeComponent();
@@ -54,18 +64,23 @@ namespace ExpertSystem.src.forms
 
         private void FillData()
         {
-            cbVariable.Items.Add(this.Fact.Variable);
+            loading = true;
+
+            cbVariable.Items.Add(selectedVariable);
             cbVariable.SelectedIndex = 0;
-            selectedVariable = this.Fact.Variable;
+
+            cbValue.Items.Add(selectedValue);
+            cbValue.SelectedIndex = 0;
+
+            loading = false;
 
             FillOperationCb();
             FillVariableCb();
+            FillValueCb();
         }
 
         private void FillVariableCb()
         {
-            cbVariable.Items.Clear();
-
             foreach (Variable variable in variableService.GetVariables())
             {
                 if (variable.Number == selectedVariable?.Number)
@@ -79,7 +94,15 @@ namespace ExpertSystem.src.forms
 
         private void FillValueCb()
         {
-            cbValue.Items.Clear();
+            foreach (Value value in selectedVariable.Domain.Values)
+            {
+                if (value.Number == selectedValue?.Number)
+                {
+                    continue;
+                }
+
+                cbValue.Items.Add(value);
+            }
         }
 
         private void FillOperationCb()
@@ -101,12 +124,25 @@ namespace ExpertSystem.src.forms
 
         private void cbVariable_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cbValue.Enabled = cbVariable.Items.Count != 0;
+            btVariableEdit.Enabled = cbVariable.Items.Count != 0;
+
+            if (loading)
+            {
+                return;
+            }
+
+            selectedVariable = (Variable)cbVariable.SelectedItem;
+            selectedValue = null;
+            cbValue.Items.Clear();
             FillValueCb();
         }
 
         private void btOk_Click(object sender, EventArgs e)
         {
-            this.Fact = this.factService.GetOrCreateFactByVarVal((Variable) cbVariable.SelectedItem, (Value) cbValue.SelectedItem);
+            this.Fact = this.factService.GetOrCreateFactByVarVal((Variable) cbVariable.SelectedItem,
+                    (Value)cbValue.SelectedItem);
+            
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -119,7 +155,37 @@ namespace ExpertSystem.src.forms
 
         private void cbValue_SelectedIndexChanged(object sender, EventArgs e)
         {
+            this.selectedValue = (Value) cbValue.SelectedItem;
+        }
 
+        private void FactForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btVariableAdd_Click(object sender, EventArgs e)
+        {
+            VariableForm variableForm = new VariableForm(domainService);
+            if (variableForm.ShowDialog(this) == DialogResult.OK)
+            {
+                this.variableService.AddVariable(variableForm.Variable);
+                cbVariable.Items.Add(variableForm.Variable);
+            }
+
+            variableForm.Dispose();
+        }
+
+        private void btVariableEdit_Click(object sender, EventArgs e)
+        {
+            Variable selectedVariable = (Variable) cbVariable.SelectedItem;
+            VariableForm variableForm = new VariableForm(selectedVariable, domainService);
+            if (variableForm.ShowDialog(this) == DialogResult.OK)
+            {
+                cbValue.Items.Clear();
+                FillValueCb();
+            }
+
+            variableForm.Dispose();
         }
     }
 }

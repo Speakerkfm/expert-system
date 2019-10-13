@@ -20,5 +20,10 @@ namespace ExpertSystem.src.service
         {
             return dataContainer.ExpertSystem.Variables;
         }
+
+        public void AddVariable(Variable variable)
+        {
+            this.dataContainer.ExpertSystem.Variables.Add(variable);
+        }
     }
 }

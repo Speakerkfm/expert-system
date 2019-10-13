@@ -51,6 +51,10 @@ namespace ExpertSystem.service
             fact3.Variable = expertSystem.Variables[0];
             fact3.Value = fact3.Variable.Domain.Values[1];
 
+            expertSystem.Facts.Add(fact1);
+            expertSystem.Facts.Add(fact2);
+            expertSystem.Facts.Add(fact3);
+
             Rule rule1 = new Rule();
             rule1.Name = "Rule1";
             rule1.Conditions.Add(fact1);
