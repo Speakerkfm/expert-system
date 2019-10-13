@@ -101,13 +101,35 @@ namespace ExpertSystem
 
         private void btRuleAdd_Click(object sender, EventArgs e)
         {
-            RuleForm ruleEditor = new RuleForm(_ruleService);
+            RuleForm ruleEditor = new RuleForm(_ruleService, _variableService, _factService);
             if (ruleEditor.ShowDialog() == DialogResult.OK)
             {
-                this.expertSystem.Rules = ruleEditor.Rules;
+                this.expertSystem.Rules.Add(ruleEditor.Rule);
+                lvRules.Items.Add(new ListViewItem(new[] { ruleEditor.Rule.Name, ruleEditor.Rule.ToString() }));
             }
 
             ruleEditor.Dispose();
+        }
+
+        private void btRuleEdit_Click(object sender, EventArgs e)
+        {
+            Rule selectedRule = Rules[lvRules.SelectedIndices[0]];
+            RuleForm ruleEditor = new RuleForm(selectedRule, _ruleService, _variableService, _factService);
+            if (ruleEditor.ShowDialog() == DialogResult.OK)
+            {
+                FillRulesLv();
+            }
+
+            ruleEditor.Dispose();
+        }
+
+        private void btRuleDelete_Click(object sender, EventArgs e)
+        {
+            foreach (int index in lvRules.SelectedIndices)
+            {
+                Rules.RemoveAt(index);
+                lvRules.Items.RemoveAt(index);
+            }
         }
     }
 }

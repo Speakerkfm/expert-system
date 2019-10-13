@@ -45,6 +45,7 @@
             this.cbVariable.Name = "cbVariable";
             this.cbVariable.Size = new System.Drawing.Size(291, 33);
             this.cbVariable.TabIndex = 0;
+            this.cbVariable.SelectedIndexChanged += new System.EventHandler(this.cbVariable_SelectedIndexChanged);
             // 
             // cbOperation
             // 
@@ -63,6 +64,7 @@
             this.cbValue.Name = "cbValue";
             this.cbValue.Size = new System.Drawing.Size(265, 33);
             this.cbValue.TabIndex = 2;
+            this.cbValue.SelectedIndexChanged += new System.EventHandler(this.cbValue_SelectedIndexChanged);
             // 
             // btCancel
             // 
@@ -72,6 +74,7 @@
             this.btCancel.TabIndex = 27;
             this.btCancel.Text = "Cancel";
             this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // btOk
             // 
@@ -81,6 +84,7 @@
             this.btOk.TabIndex = 26;
             this.btOk.Text = "Ok";
             this.btOk.UseVisualStyleBackColor = true;
+            this.btOk.Click += new System.EventHandler(this.btOk_Click);
             // 
             // btVariableEdit
             // 

@@ -39,5 +39,10 @@ namespace ExpertSystem.model
             this.Type = type;
             this.DomainId = domainId;
         }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

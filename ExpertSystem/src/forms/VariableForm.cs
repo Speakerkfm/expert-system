@@ -68,6 +68,8 @@ namespace ExpertSystem.src.forms
 
         private void FillDomainsCb()
         {
+            cbDomains.Items.Clear();
+
             foreach (Domain domain in domainService.GetDomains())
             {
                 if (domain.Number == selectedDomain?.Number)

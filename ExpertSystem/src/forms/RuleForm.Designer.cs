@@ -45,6 +45,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbRuleName = new System.Windows.Forms.TextBox();
             this.btCancel = new System.Windows.Forms.Button();
+            this.btOk = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btConditionEdit
@@ -55,6 +56,7 @@
             this.btConditionEdit.TabIndex = 38;
             this.btConditionEdit.Text = "edit";
             this.btConditionEdit.UseVisualStyleBackColor = true;
+            this.btConditionEdit.Click += new System.EventHandler(this.btConditionEdit_Click);
             // 
             // btConditionDelete
             // 
@@ -64,6 +66,7 @@
             this.btConditionDelete.TabIndex = 37;
             this.btConditionDelete.Text = "-";
             this.btConditionDelete.UseVisualStyleBackColor = true;
+            this.btConditionDelete.Click += new System.EventHandler(this.btConditionDelete_Click);
             // 
             // btConditionAdd
             // 
@@ -73,6 +76,7 @@
             this.btConditionAdd.TabIndex = 36;
             this.btConditionAdd.Text = "+";
             this.btConditionAdd.UseVisualStyleBackColor = true;
+            this.btConditionAdd.Click += new System.EventHandler(this.btConditionAdd_Click);
             // 
             // lvConditions
             // 
@@ -90,12 +94,12 @@
             // Variable
             // 
             this.Variable.Text = "Variable";
-            this.Variable.Width = 250;
+            this.Variable.Width = 100;
             // 
             // Value
             // 
             this.Value.Text = "Value";
-            this.Value.Width = 260;
+            this.Value.Width = 100;
             // 
             // btConclusionEdit
             // 
@@ -105,6 +109,7 @@
             this.btConclusionEdit.TabIndex = 42;
             this.btConclusionEdit.Text = "edit";
             this.btConclusionEdit.UseVisualStyleBackColor = true;
+            this.btConclusionEdit.Click += new System.EventHandler(this.btConclusionEdit_Click);
             // 
             // btConclusionDelete
             // 
@@ -114,6 +119,7 @@
             this.btConclusionDelete.TabIndex = 41;
             this.btConclusionDelete.Text = "-";
             this.btConclusionDelete.UseVisualStyleBackColor = true;
+            this.btConclusionDelete.Click += new System.EventHandler(this.btConclusionDelete_Click);
             // 
             // btConclusionAdd
             // 
@@ -123,6 +129,7 @@
             this.btConclusionAdd.TabIndex = 40;
             this.btConclusionAdd.Text = "+";
             this.btConclusionAdd.UseVisualStyleBackColor = true;
+            this.btConclusionAdd.Click += new System.EventHandler(this.btConclusionAdd_Click);
             // 
             // lvConclusions
             // 
@@ -140,12 +147,12 @@
             // ConclusionVariable
             // 
             this.ConclusionVariable.Text = "Variable";
-            this.ConclusionVariable.Width = 262;
+            this.ConclusionVariable.Width = 100;
             // 
             // ConclusionValue
             // 
             this.ConclusionValue.Text = "Value";
-            this.ConclusionValue.Width = 255;
+            this.ConclusionValue.Width = 100;
             // 
             // label1
             // 
@@ -183,12 +190,23 @@
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(933, 620);
+            this.btCancel.Location = new System.Drawing.Point(1000, 630);
             this.btCancel.Name = "btCancel";
-            this.btCancel.Size = new System.Drawing.Size(168, 75);
-            this.btCancel.TabIndex = 47;
-            this.btCancel.Text = "Close";
+            this.btCancel.Size = new System.Drawing.Size(101, 63);
+            this.btCancel.TabIndex = 48;
+            this.btCancel.Text = "Cancel";
             this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
+            // 
+            // btOk
+            // 
+            this.btOk.Location = new System.Drawing.Point(893, 630);
+            this.btOk.Name = "btOk";
+            this.btOk.Size = new System.Drawing.Size(101, 63);
+            this.btOk.TabIndex = 47;
+            this.btOk.Text = "Ok";
+            this.btOk.UseVisualStyleBackColor = true;
+            this.btOk.Click += new System.EventHandler(this.btOk_Click);
             // 
             // RuleForm
             // 
@@ -196,6 +214,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1119, 737);
             this.Controls.Add(this.btCancel);
+            this.Controls.Add(this.btOk);
             this.Controls.Add(this.tbRuleName);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -235,5 +254,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox tbRuleName;
         private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.Button btOk;
     }
 }

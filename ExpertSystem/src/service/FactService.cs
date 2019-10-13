@@ -21,5 +21,18 @@ namespace ExpertSystem.src.service
         {
             return dataContainer.ExpertSystem?.Facts;
         }
+
+        public Fact GetOrCreateFactByVarVal(Variable variable, Value value)
+        {
+            foreach (Fact fact in GetFacts())
+            {
+                if (fact.Variable == variable && fact.Value == value)
+                {
+                    return fact;
+                }
+            }
+
+            return new Fact(variable, value);
+        }
     }
 }

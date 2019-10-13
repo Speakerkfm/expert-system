@@ -17,5 +17,11 @@ namespace ExpertSystem.entity
         {
 
         }
+
+        public Fact(Variable variable, Value value)
+        {
+            this.Variable = variable;
+            this.Value = value;
+        }
     }
 }

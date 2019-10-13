@@ -151,6 +151,7 @@
             this.btRuleEdit.TabIndex = 34;
             this.btRuleEdit.Text = "edit";
             this.btRuleEdit.UseVisualStyleBackColor = true;
+            this.btRuleEdit.Click += new System.EventHandler(this.btRuleEdit_Click);
             // 
             // btRuleDelete
             // 
@@ -160,6 +161,7 @@
             this.btRuleDelete.TabIndex = 33;
             this.btRuleDelete.Text = "-";
             this.btRuleDelete.UseVisualStyleBackColor = true;
+            this.btRuleDelete.Click += new System.EventHandler(this.btRuleDelete_Click);
             // 
             // btRuleAdd
             // 

@@ -18,5 +18,10 @@ namespace ExpertSystem.model
             this.Number = number;
             this.Val = value;
         }
+
+        public override string ToString()
+        {
+            return this.Val;
+        }
     }
 }
