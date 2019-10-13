@@ -9,8 +9,13 @@ namespace ExpertSystem.entity
 {
     class Fact
     {
-        private int id;
-        private Variable variable;
-        private Value value;
+        public int Id { get; set; }
+        public Variable Variable { get; set; }
+        public Value Value { get; set; }
+
+        public Fact()
+        {
+
+        }
     }
 }

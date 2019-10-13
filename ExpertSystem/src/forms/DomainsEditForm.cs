@@ -37,11 +37,6 @@ namespace ExpertSystem.src.forms
             }
         }
 
-        private void dgvDomains_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            MessageBox.Show("kek");
-        }
-
         private void btVariableAdd_Click(object sender, EventArgs e)
         {
             DomainForm domainForm = new DomainForm();

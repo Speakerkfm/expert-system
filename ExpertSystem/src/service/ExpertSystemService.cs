@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using ExpertSystem.entity;
 using ExpertSystem.model;
 
 namespace ExpertSystem.service
@@ -37,6 +38,33 @@ namespace ExpertSystem.service
         {
             expertSystem.Variables = dataContainer.Store.GetVariables(expertSystem.Id);
             expertSystem.Domains = dataContainer.Store.GetDomains(expertSystem.Id);
+            
+            Fact fact1 = new Fact();
+            fact1.Variable = expertSystem.Variables[0];
+            fact1.Value = fact1.Variable.Domain.Values[0];
+
+            Fact fact2 = new Fact();
+            fact2.Variable = expertSystem.Variables[1];
+            fact2.Value = fact2.Variable.Domain.Values[0];
+
+            Fact fact3 = new Fact();
+            fact3.Variable = expertSystem.Variables[0];
+            fact3.Value = fact3.Variable.Domain.Values[1];
+
+            Rule rule1 = new Rule();
+            rule1.Name = "Rule1";
+            rule1.Conditions.Add(fact1);
+            rule1.Conditions.Add(fact2);
+            rule1.Conclusions.Add(fact3);
+
+            Rule rule2 = new Rule();
+            rule2.Name = "Rule2";
+            rule2.Conditions.Add(fact1);
+            rule2.Conclusions.Add(fact2);
+            rule2.Conclusions.Add(fact3);
+
+            expertSystem.Rules.Add(rule1);
+            expertSystem.Rules.Add(rule2);
         }
     }
 }

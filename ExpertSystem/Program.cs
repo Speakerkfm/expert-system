@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ExpertSystem.entity;
 using ExpertSystem.store;
 using ExpertSystem.model;
 using ExpertSystem.service;
@@ -51,11 +52,19 @@ namespace ExpertSystem
             ExpertSystemService expertSystemService = new ExpertSystemService(dataContainer);
             VariableService variableService = new VariableService(dataContainer);
             DomainService domainService = new DomainService(dataContainer);
+            FactService factService = new FactService(dataContainer);
+            RuleService ruleService = new RuleService(dataContainer);
 
             dataContainer.ExpertSystem = new CurrentExpertSystem(0, "default");
 
             //forms
-            MainForm mainForm = new MainForm(dataContainer.ExpertSystem, expertSystemService, variableService, domainService);
+            MainForm mainForm = new MainForm(
+                dataContainer.ExpertSystem, 
+                expertSystemService, 
+                variableService, 
+                domainService,
+                ruleService,
+                factService);
 
             Application.Run(mainForm);
 

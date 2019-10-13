@@ -75,7 +75,6 @@
             this.rbTypeConcludedRequested.Name = "rbTypeConcludedRequested";
             this.rbTypeConcludedRequested.Size = new System.Drawing.Size(314, 29);
             this.rbTypeConcludedRequested.TabIndex = 2;
-            this.rbTypeConcludedRequested.TabStop = true;
             this.rbTypeConcludedRequested.Text = "Выводимо-запрашиваемая";
             this.rbTypeConcludedRequested.UseVisualStyleBackColor = true;
             // 
@@ -86,13 +85,13 @@
             this.rbTypeConcluded.Name = "rbTypeConcluded";
             this.rbTypeConcluded.Size = new System.Drawing.Size(157, 29);
             this.rbTypeConcluded.TabIndex = 1;
-            this.rbTypeConcluded.TabStop = true;
             this.rbTypeConcluded.Text = "Выводимая";
             this.rbTypeConcluded.UseVisualStyleBackColor = true;
             // 
             // rbTypeRequested
             // 
             this.rbTypeRequested.AutoSize = true;
+            this.rbTypeRequested.Checked = true;
             this.rbTypeRequested.Location = new System.Drawing.Point(30, 44);
             this.rbTypeRequested.Name = "rbTypeRequested";
             this.rbTypeRequested.Size = new System.Drawing.Size(206, 29);
@@ -113,6 +112,7 @@
             // 
             // btDomainEdit
             // 
+            this.btDomainEdit.Enabled = false;
             this.btDomainEdit.Location = new System.Drawing.Point(432, 349);
             this.btDomainEdit.Name = "btDomainEdit";
             this.btDomainEdit.Size = new System.Drawing.Size(75, 52);

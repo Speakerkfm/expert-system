@@ -44,6 +44,7 @@ namespace ExpertSystem.src.forms
         {
             expertSystemService.SelectExpertSystem(expertSystems[cbExpertSystem.SelectedIndex]);
 
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }

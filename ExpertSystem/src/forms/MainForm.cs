@@ -12,6 +12,7 @@ using ExpertSystem.service;
 using ExpertSystem.src.forms;
 using ExpertSystem.src.service;
 using ExpertSystem.store;
+using Rule = ExpertSystem.model.Rule;
 
 namespace ExpertSystem
 {
@@ -25,14 +26,36 @@ namespace ExpertSystem
 
         private DomainService _domainService;
 
-        public MainForm(CurrentExpertSystem expertSystem, ExpertSystemService expertSystemService, VariableService variableService, DomainService domainService)
+        private FactService _factService;
+
+        private RuleService _ruleService;
+
+        private List<Rule> Rules;
+
+        public MainForm(CurrentExpertSystem expertSystem, ExpertSystemService expertSystemService, VariableService variableService, DomainService domainService, RuleService ruleService, FactService factService)
         {
             this.expertSystem = expertSystem;
             this._expertSystemService = expertSystemService;
             this._variableService = variableService;
             this._domainService = domainService;
+            this._factService = factService;
+            this._ruleService = ruleService;
 
             InitializeComponent();
+        }
+
+        private void FillRulesLv()
+        {
+            if (this.Rules == null)
+            {
+                return;
+            }
+
+            lvRules.Items.Clear();
+            foreach (Rule rule in Rules)
+            {
+                lvRules.Items.Add(new ListViewItem(new[] { rule.Name, rule.ToString()}));
+            }
         }
 
         private void expertSystemToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -44,7 +67,14 @@ namespace ExpertSystem
         private void expertSystemToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ExpertSystemSelectForm expertSystemSelector = new ExpertSystemSelectForm(_expertSystemService);
-            expertSystemSelector.Show();
+            if (expertSystemSelector.ShowDialog() == DialogResult.OK)
+            {
+                this.Rules = this._ruleService.GetRules();
+
+                FillRulesLv();
+            }
+
+            expertSystemSelector.Dispose();
         }
 
         private void variablesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -54,6 +84,8 @@ namespace ExpertSystem
             {
                 this.expertSystem.Variables = variablesEditor.Variables;
             }
+
+            variablesEditor.Dispose();
         }
 
         private void domainsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,6 +95,19 @@ namespace ExpertSystem
             {
                 this.expertSystem.Domains = domainEditor.Domains;
             }
+
+            domainEditor.Dispose();
+        }
+
+        private void btRuleAdd_Click(object sender, EventArgs e)
+        {
+            RuleForm ruleEditor = new RuleForm(_ruleService);
+            if (ruleEditor.ShowDialog() == DialogResult.OK)
+            {
+                this.expertSystem.Rules = ruleEditor.Rules;
+            }
+
+            ruleEditor.Dispose();
         }
     }
 }

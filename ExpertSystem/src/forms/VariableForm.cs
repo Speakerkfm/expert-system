@@ -26,7 +26,7 @@ namespace ExpertSystem.src.forms
 
             InitializeComponent();
 
-            FillDomainsCB();
+            FillDomainsCb();
         }
 
         public VariableForm(Variable variable, DomainService domainService)
@@ -62,11 +62,11 @@ namespace ExpertSystem.src.forms
             cbDomains.SelectedIndex = 0;
             selectedDomain = Variable.Domain;
 
-            FillDomainsCB();
-            FillValuesLV();
+            FillDomainsCb();
+            FillValuesLv();
         }
 
-        private void FillDomainsCB()
+        private void FillDomainsCb()
         {
             foreach (Domain domain in domainService.GetDomains())
             {
@@ -79,7 +79,7 @@ namespace ExpertSystem.src.forms
             }
         }
 
-        public void FillValuesLV()
+        public void FillValuesLv()
         {
             lvValues.Items.Clear();
             foreach (Value value in selectedDomain.Values)
@@ -104,7 +104,7 @@ namespace ExpertSystem.src.forms
             DomainForm domainForm = new DomainForm(selectedDomain);
             if (domainForm.ShowDialog(this) == DialogResult.OK)
             {
-                FillValuesLV();
+                FillValuesLv();
             }
 
             domainForm.Dispose();
@@ -113,7 +113,8 @@ namespace ExpertSystem.src.forms
         private void cbDomains_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedDomain = (Domain)cbDomains.SelectedItem;
-            FillValuesLV();
+            btDomainEdit.Enabled = true;
+            FillValuesLv();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

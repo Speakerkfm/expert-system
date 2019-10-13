@@ -37,9 +37,13 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.variablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.domainsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lvRules = new System.Windows.Forms.ListView();
+            this.RuleName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Rule = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btRuleEdit = new System.Windows.Forms.Button();
+            this.btRuleDelete = new System.Windows.Forms.Button();
+            this.btRuleAdd = new System.Windows.Forms.Button();
             this.headerMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // headerMenu
@@ -116,22 +120,66 @@
             this.domainsToolStripMenuItem.Text = "Domains";
             this.domainsToolStripMenuItem.Click += new System.EventHandler(this.domainsToolStripMenuItem_Click);
             // 
-            // dataGridView1
+            // lvRules
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 78);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1195, 579);
-            this.dataGridView1.TabIndex = 1;
+            this.lvRules.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.RuleName,
+            this.Rule});
+            this.lvRules.FullRowSelect = true;
+            this.lvRules.Location = new System.Drawing.Point(12, 127);
+            this.lvRules.Name = "lvRules";
+            this.lvRules.Size = new System.Drawing.Size(1046, 404);
+            this.lvRules.TabIndex = 31;
+            this.lvRules.UseCompatibleStateImageBehavior = false;
+            this.lvRules.View = System.Windows.Forms.View.Details;
+            // 
+            // RuleName
+            // 
+            this.RuleName.Text = "Name";
+            this.RuleName.Width = 262;
+            // 
+            // Rule
+            // 
+            this.Rule.Text = "Rule";
+            this.Rule.Width = 255;
+            // 
+            // btRuleEdit
+            // 
+            this.btRuleEdit.Location = new System.Drawing.Point(937, 60);
+            this.btRuleEdit.Name = "btRuleEdit";
+            this.btRuleEdit.Size = new System.Drawing.Size(58, 61);
+            this.btRuleEdit.TabIndex = 34;
+            this.btRuleEdit.Text = "edit";
+            this.btRuleEdit.UseVisualStyleBackColor = true;
+            // 
+            // btRuleDelete
+            // 
+            this.btRuleDelete.Location = new System.Drawing.Point(1001, 60);
+            this.btRuleDelete.Name = "btRuleDelete";
+            this.btRuleDelete.Size = new System.Drawing.Size(57, 61);
+            this.btRuleDelete.TabIndex = 33;
+            this.btRuleDelete.Text = "-";
+            this.btRuleDelete.UseVisualStyleBackColor = true;
+            // 
+            // btRuleAdd
+            // 
+            this.btRuleAdd.Location = new System.Drawing.Point(874, 60);
+            this.btRuleAdd.Name = "btRuleAdd";
+            this.btRuleAdd.Size = new System.Drawing.Size(57, 61);
+            this.btRuleAdd.TabIndex = 32;
+            this.btRuleAdd.Text = "+";
+            this.btRuleAdd.UseVisualStyleBackColor = true;
+            this.btRuleAdd.Click += new System.EventHandler(this.btRuleAdd_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1246, 819);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btRuleEdit);
+            this.Controls.Add(this.btRuleDelete);
+            this.Controls.Add(this.btRuleAdd);
+            this.Controls.Add(this.lvRules);
             this.Controls.Add(this.headerMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.headerMenu;
@@ -139,7 +187,6 @@
             this.Text = "Expert system";
             this.headerMenu.ResumeLayout(false);
             this.headerMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,7 +195,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip headerMenu;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem expertSystemToolStripCreateES;
@@ -157,6 +203,12 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem variablesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem domainsToolStripMenuItem;
+        private System.Windows.Forms.ListView lvRules;
+        private System.Windows.Forms.ColumnHeader RuleName;
+        private System.Windows.Forms.ColumnHeader Rule;
+        private System.Windows.Forms.Button btRuleEdit;
+        private System.Windows.Forms.Button btRuleDelete;
+        private System.Windows.Forms.Button btRuleAdd;
     }
 }
 

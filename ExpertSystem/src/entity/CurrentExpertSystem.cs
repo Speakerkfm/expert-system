@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExpertSystem.entity;
 
 namespace ExpertSystem.model
 {
@@ -16,6 +17,8 @@ namespace ExpertSystem.model
 
         public List<Variable> Variables { get; set; }
         public List<Domain> Domains { get; set; }
+        public List<Rule> Rules { get; set; }
+        public List<Fact> Facts { get; set; }
 
         public CurrentExpertSystem(int id, string name)
         {
@@ -23,6 +26,8 @@ namespace ExpertSystem.model
             this.name = name;
             this.Variables = new List<Variable>();
             this.Domains = new List<Domain>();
+            this.Facts = new List<Fact>();
+            this.Rules = new List<Rule>();
         }
     }
 }
