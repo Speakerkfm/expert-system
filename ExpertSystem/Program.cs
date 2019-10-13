@@ -52,6 +52,8 @@ namespace ExpertSystem
             VariableService variableService = new VariableService(dataContainer);
             DomainService domainService = new DomainService(dataContainer);
 
+            dataContainer.ExpertSystem = new CurrentExpertSystem(0, "default");
+
             //forms
             MainForm mainForm = new MainForm(expertSystemService, variableService, domainService);
 

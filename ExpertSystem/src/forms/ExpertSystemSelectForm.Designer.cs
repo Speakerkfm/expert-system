@@ -58,6 +58,7 @@
             this.ClientSize = new System.Drawing.Size(539, 317);
             this.Controls.Add(this.btSelectExpertSystem);
             this.Controls.Add(this.cbExpertSystem);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ExpertSystemSelectForm";
             this.Text = "ExpertSystemSelectForm";
             this.ResumeLayout(false);

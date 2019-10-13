@@ -36,8 +36,8 @@
             this.expertSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.variablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.domainsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.headerMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -50,7 +50,7 @@
             this.editToolStripMenuItem});
             this.headerMenu.Location = new System.Drawing.Point(0, 0);
             this.headerMenu.Name = "headerMenu";
-            this.headerMenu.Size = new System.Drawing.Size(1246, 42);
+            this.headerMenu.Size = new System.Drawing.Size(1246, 40);
             this.headerMenu.TabIndex = 0;
             this.headerMenu.Text = "menuStrip1";
             // 
@@ -60,7 +60,7 @@
             this.newToolStripMenuItem,
             this.openToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 38);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 36);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newToolStripMenuItem
@@ -99,15 +99,22 @@
             this.variablesToolStripMenuItem,
             this.domainsToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(67, 38);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(67, 36);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // variablesToolStripMenuItem
             // 
             this.variablesToolStripMenuItem.Name = "variablesToolStripMenuItem";
-            this.variablesToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.variablesToolStripMenuItem.Size = new System.Drawing.Size(208, 38);
             this.variablesToolStripMenuItem.Text = "Variables";
             this.variablesToolStripMenuItem.Click += new System.EventHandler(this.variablesToolStripMenuItem_Click);
+            // 
+            // domainsToolStripMenuItem
+            // 
+            this.domainsToolStripMenuItem.Name = "domainsToolStripMenuItem";
+            this.domainsToolStripMenuItem.Size = new System.Drawing.Size(208, 38);
+            this.domainsToolStripMenuItem.Text = "Domains";
+            this.domainsToolStripMenuItem.Click += new System.EventHandler(this.domainsToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
@@ -115,15 +122,9 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 78);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(995, 579);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1195, 579);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // domainsToolStripMenuItem
-            // 
-            this.domainsToolStripMenuItem.Name = "domainsToolStripMenuItem";
-            this.domainsToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
-            this.domainsToolStripMenuItem.Text = "Domains";
-            this.domainsToolStripMenuItem.Click += new System.EventHandler(this.domainsToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -132,6 +133,7 @@
             this.ClientSize = new System.Drawing.Size(1246, 819);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.headerMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.headerMenu;
             this.Name = "MainForm";
             this.Text = "Expert system";

@@ -30,6 +30,13 @@ namespace ExpertSystem.src.forms
         private void FillData()
         {
             dgvVariables.DataSource = variables;
+
+            if (dgvVariables.Columns.Count != 0)
+            {
+                dgvVariables.Columns[0].Visible = false;
+                dgvVariables.Columns[2].Visible = false;
+                dgvVariables.Columns[4].Visible = false;
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ExpertSystem.model;
 using ExpertSystem.src.service;
+using MySql.Data.Types;
 
 namespace ExpertSystem.src.forms
 {
@@ -30,6 +31,41 @@ namespace ExpertSystem.src.forms
         private void FillData()
         {
             dgvDomains.DataSource = domains;
+
+            if (dgvDomains.Columns.Count != 0)
+            {
+                dgvDomains.Columns[3].Visible = false;
+            }
+        }
+
+        private void dgvDomains_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            MessageBox.Show("kek");
+        }
+
+        private void btVariableAdd_Click(object sender, EventArgs e)
+        {
+            DomainForm domainForm = new DomainForm();
+            domainForm.Show();
+        }
+
+        private void btVariableEdit_Click(object sender, EventArgs e)
+        {
+            DomainForm domainForm = new DomainForm((Domain)dgvDomains.SelectedRows[0].DataBoundItem);
+            domainForm.Show();
+        }
+
+        private void btVariableDelete_Click(object sender, EventArgs e)
+        {
+            dgvDomains.DataSource = null;
+
+            foreach (var selectedRow in dgvDomains.SelectedRows)
+            {
+                domains.RemoveAt(((DataGridViewRow)selectedRow).Index);
+            }
+
+            dgvDomains.DataSource = domains;
+            dgvDomains.Refresh();
         }
     }
 }
