@@ -18,7 +18,12 @@ namespace ExpertSystem.src.service
 
         public List<Domain> GetDomains()
         {
-            return dataContainer.ExpertSystem.Domains;
+            return dataContainer.ExpertSystem?.Domains;
+        }
+
+        public void AddDomain(Domain domain)
+        {
+            this.dataContainer.ExpertSystem.Domains.Add(domain);
         }
     }
 }

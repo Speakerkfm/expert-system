@@ -16,12 +16,12 @@ namespace ExpertSystem.src.forms
     internal partial class DomainsEditForm : Form
     {
         private DomainService domainService;
-        private List<Domain> domains;
+        public List<Domain> Domains { get; set; }
 
         public DomainsEditForm(DomainService domainService)
         {
             this.domainService = domainService;
-            this.domains = domainService.GetDomains();
+            this.Domains = domainService.GetDomains();
 
             InitializeComponent();
 
@@ -30,11 +30,10 @@ namespace ExpertSystem.src.forms
 
         private void FillData()
         {
-            dgvDomains.DataSource = domains;
-
-            if (dgvDomains.Columns.Count != 0)
+            lvDomains.Items.Clear();
+            foreach (Domain domain in Domains)
             {
-                dgvDomains.Columns[3].Visible = false;
+                lvDomains.Items.Add(new ListViewItem(new[] { (lvDomains.Items.Count + 1).ToString(), domain.Name, domain.Type }));
             }
         }
 
@@ -46,26 +45,47 @@ namespace ExpertSystem.src.forms
         private void btVariableAdd_Click(object sender, EventArgs e)
         {
             DomainForm domainForm = new DomainForm();
-            domainForm.Show();
+            if (domainForm.ShowDialog(this) == DialogResult.OK)
+            {
+                this.Domains.Add(domainForm.Domain);
+                lvDomains.Items.Add(new ListViewItem(new[] { (lvDomains.Items.Count + 1).ToString(), domainForm.Domain.Name, domainForm.Domain.Type }));
+            }
+
+            domainForm.Dispose();
         }
 
         private void btVariableEdit_Click(object sender, EventArgs e)
         {
-            DomainForm domainForm = new DomainForm((Domain)dgvDomains.SelectedRows[0].DataBoundItem);
-            domainForm.Show();
+            if (lvDomains.SelectedIndices.Count == 1)
+            {
+                Domain selectedDomain = Domains[lvDomains.SelectedIndices[0]];
+                DomainForm domainForm = new DomainForm(selectedDomain);
+                if (domainForm.ShowDialog(this) == DialogResult.OK)
+                {
+                    FillData();
+                }
+
+                domainForm.Dispose();
+            }
         }
 
         private void btVariableDelete_Click(object sender, EventArgs e)
         {
-            dgvDomains.DataSource = null;
-
-            foreach (var selectedRow in dgvDomains.SelectedRows)
+            foreach (int index in lvDomains.SelectedIndices)
             {
-                domains.RemoveAt(((DataGridViewRow)selectedRow).Index);
+                Domains.RemoveAt(index);
+                lvDomains.Items.RemoveAt(index);
             }
+        }
 
-            dgvDomains.DataSource = domains;
-            dgvDomains.Refresh();
+        private void btDomainsSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

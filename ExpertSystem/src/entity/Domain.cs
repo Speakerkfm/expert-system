@@ -18,7 +18,12 @@ namespace ExpertSystem.model
         {
             get { return values; }
             set { values = value; }
-        } 
+        }
+
+        public Domain()
+        {
+            this.values = new List<Value>();
+        }
 
         public Domain(int id, string name, string type, int number)
         {
@@ -26,6 +31,11 @@ namespace ExpertSystem.model
             this.Name = name;
             this.Type = type;
             this.Number = number;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

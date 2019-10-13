@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.btCancel = new System.Windows.Forms.Button();
-            this.btDomainsSave = new System.Windows.Forms.Button();
-            this.dgvDomains = new System.Windows.Forms.DataGridView();
             this.btVariableEdit = new System.Windows.Forms.Button();
             this.btVariableDelete = new System.Windows.Forms.Button();
             this.btVariableAdd = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDomains)).BeginInit();
+            this.lvDomains = new System.Windows.Forms.ListView();
+            this.Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DomainName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btCancel
@@ -43,30 +44,9 @@
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(168, 75);
             this.btCancel.TabIndex = 5;
-            this.btCancel.Text = "Cancel";
+            this.btCancel.Text = "Close";
             this.btCancel.UseVisualStyleBackColor = true;
-            // 
-            // btDomainsSave
-            // 
-            this.btDomainsSave.Location = new System.Drawing.Point(410, 486);
-            this.btDomainsSave.Name = "btDomainsSave";
-            this.btDomainsSave.Size = new System.Drawing.Size(185, 75);
-            this.btDomainsSave.TabIndex = 4;
-            this.btDomainsSave.Text = "Save";
-            this.btDomainsSave.UseVisualStyleBackColor = true;
-            // 
-            // dgvDomains
-            // 
-            this.dgvDomains.AllowDrop = true;
-            this.dgvDomains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDomains.Location = new System.Drawing.Point(12, 101);
-            this.dgvDomains.MultiSelect = false;
-            this.dgvDomains.Name = "dgvDomains";
-            this.dgvDomains.RowTemplate.Height = 33;
-            this.dgvDomains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDomains.Size = new System.Drawing.Size(757, 379);
-            this.dgvDomains.TabIndex = 3;
-            this.dgvDomains.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDomains_UserDeletingRow);
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // btVariableEdit
             // 
@@ -98,21 +78,47 @@
             this.btVariableAdd.UseVisualStyleBackColor = true;
             this.btVariableAdd.Click += new System.EventHandler(this.btVariableAdd_Click);
             // 
+            // lvDomains
+            // 
+            this.lvDomains.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Number,
+            this.DomainName,
+            this.Type});
+            this.lvDomains.FullRowSelect = true;
+            this.lvDomains.Location = new System.Drawing.Point(13, 101);
+            this.lvDomains.Name = "lvDomains";
+            this.lvDomains.Size = new System.Drawing.Size(756, 379);
+            this.lvDomains.TabIndex = 29;
+            this.lvDomains.UseCompatibleStateImageBehavior = false;
+            this.lvDomains.View = System.Windows.Forms.View.Details;
+            // 
+            // Number
+            // 
+            this.Number.Text = "№";
+            this.Number.Width = 83;
+            // 
+            // DomainName
+            // 
+            this.DomainName.Text = "Name";
+            this.DomainName.Width = 262;
+            // 
+            // Type
+            // 
+            this.Type.Text = "Type";
+            // 
             // DomainsEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(802, 572);
+            this.Controls.Add(this.lvDomains);
             this.Controls.Add(this.btVariableEdit);
             this.Controls.Add(this.btVariableDelete);
             this.Controls.Add(this.btVariableAdd);
             this.Controls.Add(this.btCancel);
-            this.Controls.Add(this.btDomainsSave);
-            this.Controls.Add(this.dgvDomains);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DomainsEditForm";
             this.Text = "DomainsEditForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvDomains)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -120,10 +126,12 @@
         #endregion
 
         private System.Windows.Forms.Button btCancel;
-        private System.Windows.Forms.Button btDomainsSave;
-        private System.Windows.Forms.DataGridView dgvDomains;
         private System.Windows.Forms.Button btVariableEdit;
         private System.Windows.Forms.Button btVariableDelete;
         private System.Windows.Forms.Button btVariableAdd;
+        private System.Windows.Forms.ListView lvDomains;
+        private System.Windows.Forms.ColumnHeader Number;
+        private System.Windows.Forms.ColumnHeader DomainName;
+        private System.Windows.Forms.ColumnHeader Type;
     }
 }

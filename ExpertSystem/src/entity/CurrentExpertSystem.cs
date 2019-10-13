@@ -21,6 +21,8 @@ namespace ExpertSystem.model
         {
             this.id = id;
             this.name = name;
+            this.Variables = new List<Variable>();
+            this.Domains = new List<Domain>();
         }
     }
 }

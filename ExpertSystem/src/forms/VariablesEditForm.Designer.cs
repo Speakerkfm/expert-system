@@ -28,48 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvVariables = new System.Windows.Forms.DataGridView();
-            this.btVariableSave = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
             this.btVariableDelete = new System.Windows.Forms.Button();
             this.btVariableAdd = new System.Windows.Forms.Button();
             this.btVariableEdit = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVariables)).BeginInit();
+            this.lvVariables = new System.Windows.Forms.ListView();
+            this.Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.VariableName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.DomainName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
-            // 
-            // dgvVariables
-            // 
-            this.dgvVariables.AllowDrop = true;
-            this.dgvVariables.AllowUserToAddRows = false;
-            this.dgvVariables.AllowUserToDeleteRows = false;
-            this.dgvVariables.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVariables.Location = new System.Drawing.Point(21, 80);
-            this.dgvVariables.MultiSelect = false;
-            this.dgvVariables.Name = "dgvVariables";
-            this.dgvVariables.ReadOnly = true;
-            this.dgvVariables.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvVariables.RowTemplate.Height = 33;
-            this.dgvVariables.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVariables.Size = new System.Drawing.Size(1400, 379);
-            this.dgvVariables.TabIndex = 0;
-            // 
-            // btVariableSave
-            // 
-            this.btVariableSave.Location = new System.Drawing.Point(1062, 489);
-            this.btVariableSave.Name = "btVariableSave";
-            this.btVariableSave.Size = new System.Drawing.Size(185, 75);
-            this.btVariableSave.TabIndex = 1;
-            this.btVariableSave.Text = "Ok";
-            this.btVariableSave.UseVisualStyleBackColor = true;
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(1253, 489);
+            this.btCancel.Location = new System.Drawing.Point(771, 489);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(168, 75);
             this.btCancel.TabIndex = 2;
-            this.btCancel.Text = "Cancel";
+            this.btCancel.Text = "Close";
             this.btCancel.UseVisualStyleBackColor = true;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
             // btVariableDelete
             // 
@@ -79,6 +57,7 @@
             this.btVariableDelete.TabIndex = 7;
             this.btVariableDelete.Text = "-";
             this.btVariableDelete.UseVisualStyleBackColor = true;
+            this.btVariableDelete.Click += new System.EventHandler(this.btVariableDelete_Click);
             // 
             // btVariableAdd
             // 
@@ -88,6 +67,7 @@
             this.btVariableAdd.TabIndex = 6;
             this.btVariableAdd.Text = "+";
             this.btVariableAdd.UseVisualStyleBackColor = true;
+            this.btVariableAdd.Click += new System.EventHandler(this.btVariableAdd_Click);
             // 
             // btVariableEdit
             // 
@@ -97,32 +77,69 @@
             this.btVariableEdit.TabIndex = 8;
             this.btVariableEdit.Text = "edit";
             this.btVariableEdit.UseVisualStyleBackColor = true;
+            this.btVariableEdit.Click += new System.EventHandler(this.btVariableEdit_Click);
+            // 
+            // lvVariables
+            // 
+            this.lvVariables.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Number,
+            this.VariableName,
+            this.Type,
+            this.DomainName});
+            this.lvVariables.FullRowSelect = true;
+            this.lvVariables.Location = new System.Drawing.Point(21, 79);
+            this.lvVariables.Name = "lvVariables";
+            this.lvVariables.Size = new System.Drawing.Size(918, 404);
+            this.lvVariables.TabIndex = 30;
+            this.lvVariables.UseCompatibleStateImageBehavior = false;
+            this.lvVariables.View = System.Windows.Forms.View.Details;
+            // 
+            // Number
+            // 
+            this.Number.Text = "№";
+            this.Number.Width = 83;
+            // 
+            // VariableName
+            // 
+            this.VariableName.Text = "Name";
+            this.VariableName.Width = 262;
+            // 
+            // Type
+            // 
+            this.Type.Text = "Type";
+            this.Type.Width = 255;
+            // 
+            // DomainName
+            // 
+            this.DomainName.Text = "DomainName";
+            this.DomainName.Width = 313;
             // 
             // VariablesEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1464, 635);
+            this.ClientSize = new System.Drawing.Size(957, 590);
+            this.Controls.Add(this.lvVariables);
             this.Controls.Add(this.btVariableEdit);
             this.Controls.Add(this.btVariableDelete);
             this.Controls.Add(this.btVariableAdd);
             this.Controls.Add(this.btCancel);
-            this.Controls.Add(this.btVariableSave);
-            this.Controls.Add(this.dgvVariables);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "VariablesEditForm";
             this.Text = "VariablesEditForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvVariables)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvVariables;
-        private System.Windows.Forms.Button btVariableSave;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Button btVariableDelete;
         private System.Windows.Forms.Button btVariableAdd;
         private System.Windows.Forms.Button btVariableEdit;
+        private System.Windows.Forms.ListView lvVariables;
+        private System.Windows.Forms.ColumnHeader Number;
+        private System.Windows.Forms.ColumnHeader VariableName;
+        private System.Windows.Forms.ColumnHeader Type;
+        private System.Windows.Forms.ColumnHeader DomainName;
     }
 }

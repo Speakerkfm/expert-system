@@ -123,7 +123,7 @@ namespace ExpertSystem.store
             int id = int.Parse(rowReader[0].ToString());
             string name = rowReader[1].ToString();
             string type = rowReader[2].ToString();
-            int number = int.Parse(rowReader[3].ToString());
+            int number = int.Parse(rowReader[4].ToString());
 
             rowReader.Close();
 

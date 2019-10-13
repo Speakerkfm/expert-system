@@ -17,14 +17,17 @@ namespace ExpertSystem
 {
     internal partial class MainForm : Form
     {
+        private CurrentExpertSystem expertSystem;
+
         private ExpertSystemService _expertSystemService;
 
         private VariableService _variableService;
 
         private DomainService _domainService;
 
-        public MainForm(ExpertSystemService expertSystemService, VariableService variableService, DomainService domainService)
+        public MainForm(CurrentExpertSystem expertSystem, ExpertSystemService expertSystemService, VariableService variableService, DomainService domainService)
         {
+            this.expertSystem = expertSystem;
             this._expertSystemService = expertSystemService;
             this._variableService = variableService;
             this._domainService = domainService;
@@ -46,14 +49,20 @@ namespace ExpertSystem
 
         private void variablesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            VariablesEditForm variablesEditor = new VariablesEditForm(_variableService);
-            variablesEditor.Show();
+            VariablesEditForm variablesEditor = new VariablesEditForm(_variableService, _domainService);
+            if (variablesEditor.ShowDialog() == DialogResult.OK)
+            {
+                this.expertSystem.Variables = variablesEditor.Variables;
+            }
         }
 
         private void domainsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DomainsEditForm domainEditor = new DomainsEditForm(_domainService);
-            domainEditor.Show();
+            if (domainEditor.ShowDialog() == DialogResult.OK)
+            {
+                this.expertSystem.Domains = domainEditor.Domains;
+            }
         }
     }
 }

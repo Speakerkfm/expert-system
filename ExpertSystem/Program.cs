@@ -55,7 +55,7 @@ namespace ExpertSystem
             dataContainer.ExpertSystem = new CurrentExpertSystem(0, "default");
 
             //forms
-            MainForm mainForm = new MainForm(expertSystemService, variableService, domainService);
+            MainForm mainForm = new MainForm(dataContainer.ExpertSystem, expertSystemService, variableService, domainService);
 
             Application.Run(mainForm);
 
