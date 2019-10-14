@@ -7,6 +7,7 @@ using ExpertSystem.model;
 
 namespace ExpertSystem.model
 {
+    [Serializable]
     class Variable
     {
         public const string Concluded = "Выводимая";
@@ -18,13 +19,8 @@ namespace ExpertSystem.model
         public int Number { get; set; }
         public string Type { get; set; }
         public int DomainId { get; set; }
-
-        private Domain domain;
-        public Domain Domain
-        {
-            get { return domain; }
-            set { domain = value; }
-        }
+        
+        public Domain Domain { get; set; }
 
         public Variable()
         {

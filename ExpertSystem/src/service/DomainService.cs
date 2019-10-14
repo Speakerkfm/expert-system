@@ -16,14 +16,38 @@ namespace ExpertSystem.src.service
             this.dataContainer = dataContainer;
         }
 
-        public List<Domain> GetDomains()
+        public List<Domain> Domains
         {
-            return dataContainer.ExpertSystem?.Domains;
+            get { return dataContainer.ExpertSystem?.Domains; }
         }
 
         public void AddDomain(Domain domain)
         {
-            this.dataContainer.ExpertSystem.Domains.Add(domain);
+            domain.Number = Domains.Count + 1;
+            Domains.Add(domain);
+        }
+
+        public void DeleteDomainByIdx(int index)
+        {
+            Domains.RemoveAt(index);
+
+            for (int i = index; i < Domains.Count; i++)
+            {
+                Domains[i].Number = index + 1;
+            }
+        }
+
+        public Value GetOrCreateDomainValue(List<Value> values, string val)
+        {
+            foreach (Value value in values)
+            {
+                if (value.Val == val)
+                {
+                    return value;
+                }
+            }
+
+            return new Value(values.Count + 1, val);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,7 +23,7 @@ namespace ExpertSystem.src.forms
         {
             this.variableService = variableService;
             this.domainService = domainService;
-            this.Variables = variableService.GetVariables();
+            this.Variables = variableService.Variables;
 
             InitializeComponent();
 
@@ -34,7 +35,7 @@ namespace ExpertSystem.src.forms
             lvVariables.Items.Clear();
             foreach (Variable variable in Variables)
             {
-                lvVariables.Items.Add(new ListViewItem(new[] { (lvVariables.Items.Count + 1).ToString(), variable.Name, variable.Type, variable.Domain.Name }));
+                lvVariables.Items.Add(new ListViewItem(new[] { variable.Number.ToString(), variable.Name, variable.Type, variable.Domain.Name }));
             }
         }
 
@@ -55,14 +56,9 @@ namespace ExpertSystem.src.forms
             VariableForm variableForm = new VariableForm(domainService);
             if (variableForm.ShowDialog(this) == DialogResult.OK)
             {
-                this.Variables.Add(variableForm.Variable);
-                lvVariables.Items.Add(new ListViewItem(new[]
-                {
-                    (lvVariables.Items.Count + 1).ToString(),
-                    variableForm.Variable.Name,
-                    variableForm.Variable.Type,
-                    variableForm.Variable.Domain.Name
-                }));
+                variableService.AddVariable(variableForm.Variable);
+
+                FillData();
             }
 
             variableForm.Dispose();
@@ -87,9 +83,10 @@ namespace ExpertSystem.src.forms
         {
             foreach (int index in lvVariables.SelectedIndices)
             {
-                Variables.RemoveAt(index);
-                lvVariables.Items.RemoveAt(index);
+                variableService.DeleteVariableByIdx(index);
             }
+
+            FillData();
         }
     }
 }

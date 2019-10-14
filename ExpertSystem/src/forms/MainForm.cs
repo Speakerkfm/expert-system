@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,8 +32,6 @@ namespace ExpertSystem
 
         private RuleService _ruleService;
 
-        private List<Rule> Rules;
-
         public MainForm(CurrentExpertSystem expertSystem, ExpertSystemService expertSystemService, VariableService variableService, DomainService domainService, RuleService ruleService, FactService factService)
         {
             this.expertSystem = expertSystem;
@@ -46,13 +46,13 @@ namespace ExpertSystem
 
         private void FillRulesLv()
         {
-            if (this.Rules == null)
+            if (this.expertSystem == null)
             {
                 return;
             }
 
             lvRules.Items.Clear();
-            foreach (Rule rule in Rules)
+            foreach (Rule rule in this.expertSystem.Rules)
             {
                 lvRules.Items.Add(new ListViewItem(new[] { rule.Name, rule.ToString()}));
             }
@@ -69,7 +69,7 @@ namespace ExpertSystem
             ExpertSystemSelectForm expertSystemSelector = new ExpertSystemSelectForm(_expertSystemService);
             if (expertSystemSelector.ShowDialog() == DialogResult.OK)
             {
-                this.Rules = this._ruleService.GetRules();
+                this.expertSystem = _expertSystemService.GetCurrentExpertSystem();
 
                 FillRulesLv();
             }
@@ -104,7 +104,7 @@ namespace ExpertSystem
             RuleForm ruleEditor = new RuleForm(_ruleService, _variableService, _factService, _domainService);
             if (ruleEditor.ShowDialog() == DialogResult.OK)
             {
-                this.expertSystem.Rules.Add(ruleEditor.Rule);
+                this._ruleService.AddRule(ruleEditor.Rule);
                 lvRules.Items.Add(new ListViewItem(new[] { ruleEditor.Rule.Name, ruleEditor.Rule.ToString() }));
             }
 
@@ -113,23 +113,49 @@ namespace ExpertSystem
 
         private void btRuleEdit_Click(object sender, EventArgs e)
         {
-            Rule selectedRule = Rules[lvRules.SelectedIndices[0]];
-            RuleForm ruleEditor = new RuleForm(selectedRule, _ruleService, _variableService, _factService, _domainService);
-            if (ruleEditor.ShowDialog() == DialogResult.OK)
+            if (lvRules.SelectedIndices.Count == 1)
             {
-                FillRulesLv();
-            }
+                Rule selectedRule = this.expertSystem.Rules[lvRules.SelectedIndices[0]];
+                RuleForm ruleEditor = new RuleForm(selectedRule, _ruleService, _variableService, _factService,
+                    _domainService);
+                if (ruleEditor.ShowDialog() == DialogResult.OK)
+                {
+                    FillRulesLv();
+                }
 
-            ruleEditor.Dispose();
+                ruleEditor.Dispose();
+            }
         }
         
         private void btRuleDelete_Click(object sender, EventArgs e)
         {
             foreach (int index in lvRules.SelectedIndices)
             {
-                Rules.RemoveAt(index);
+                this.expertSystem.Rules.RemoveAt(index);
                 lvRules.Items.RemoveAt(index);
             }
+        }
+
+        private void fileToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            using (FileStream fs = new FileStream("es.dat", FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, expertSystem);
+            }
+        }
+
+        private void fromFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            using (FileStream fs = new FileStream("es.dat", FileMode.OpenOrCreate))
+            {
+                this.expertSystem = (CurrentExpertSystem) formatter.Deserialize(fs);
+                this._expertSystemService.SelectExpertSystem(this.expertSystem);
+            }
+
+            FillRulesLv();
         }
     }
 }

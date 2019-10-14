@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExpertSystem.model
 {
+    [Serializable]
     class Domain
     {
         public int Id { get; set; }

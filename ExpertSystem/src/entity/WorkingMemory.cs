@@ -7,6 +7,7 @@ using ExpertSystem.entity;
 
 namespace ExpertSystem.src.entity
 {
+    [Serializable]
     class WorkingMemory
     {
         public List<Fact> KnownFacts { get; set; }

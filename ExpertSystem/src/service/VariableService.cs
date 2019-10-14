@@ -16,14 +16,28 @@ namespace ExpertSystem.src.service
             this.dataContainer = dataContainer;
         }
 
-        public List<Variable> GetVariables()
+        public List<Variable> Variables
         {
-            return dataContainer.ExpertSystem.Variables;
+            get
+            {
+                return dataContainer?.ExpertSystem?.Variables;
+            }
         }
 
         public void AddVariable(Variable variable)
         {
-            this.dataContainer.ExpertSystem.Variables.Add(variable);
+            variable.Number = Variables.Count + 1;
+            Variables.Add(variable);
+        }
+
+        public void DeleteVariableByIdx(int index)
+        {
+            Variables.RemoveAt(index);
+
+            for (int i = index; i < Variables.Count; i++)
+            {
+                Variables[i].Number = index + 1;
+            }
         }
     }
 }

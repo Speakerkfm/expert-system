@@ -7,6 +7,7 @@ using ExpertSystem.entity;
 
 namespace ExpertSystem.model
 {
+    [Serializable]
     class CurrentExpertSystem
     {
         private int id;

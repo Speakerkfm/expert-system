@@ -81,9 +81,9 @@ namespace ExpertSystem.src.forms
 
         private void FillVariableCb()
         {
-            foreach (Variable variable in variableService.GetVariables())
+            foreach (Variable variable in variableService.Variables)
             {
-                if (variable.Number == selectedVariable?.Number)
+                if (variable == selectedVariable)
                 {
                     continue;
                 }
@@ -96,7 +96,7 @@ namespace ExpertSystem.src.forms
         {
             foreach (Value value in selectedVariable.Domain.Values)
             {
-                if (value.Number == selectedValue?.Number)
+                if (value == selectedValue)
                 {
                     continue;
                 }

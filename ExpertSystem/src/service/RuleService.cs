@@ -20,5 +20,10 @@ namespace ExpertSystem.src.service
         {
             return dataContainer.ExpertSystem?.Rules;
         }
+
+        public void AddRule(Rule rule)
+        {
+            this.dataContainer.ExpertSystem.Rules.Add(rule);
+        }
     }
 }

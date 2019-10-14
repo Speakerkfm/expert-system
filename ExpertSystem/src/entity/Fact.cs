@@ -7,6 +7,7 @@ using ExpertSystem.model;
 
 namespace ExpertSystem.entity
 {
+    [Serializable]
     class Fact
     {
         public int Id { get; set; }

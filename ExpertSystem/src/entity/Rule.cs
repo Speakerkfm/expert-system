@@ -8,6 +8,7 @@ using ExpertSystem.entity;
 
 namespace ExpertSystem.model
 {
+    [Serializable]
     class Rule
     {
         public int Id { get; set; }

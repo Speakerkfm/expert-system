@@ -30,7 +30,7 @@ namespace ExpertSystem.service
 
         public void SelectExpertSystem(CurrentExpertSystem expertSystem)
         {
-            LoadExpertSystem(expertSystem);
+            //LoadExpertSystem(expertSystem);
             dataContainer.ExpertSystem = expertSystem;
         }
 
@@ -69,6 +69,11 @@ namespace ExpertSystem.service
 
             expertSystem.Rules.Add(rule1);
             expertSystem.Rules.Add(rule2);
+        }
+
+        public CurrentExpertSystem GetCurrentExpertSystem()
+        {
+            return this.dataContainer.ExpertSystem;
         }
     }
 }

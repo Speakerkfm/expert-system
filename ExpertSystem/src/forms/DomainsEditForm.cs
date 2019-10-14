@@ -21,7 +21,7 @@ namespace ExpertSystem.src.forms
         public DomainsEditForm(DomainService domainService)
         {
             this.domainService = domainService;
-            this.Domains = domainService.GetDomains();
+            this.Domains = domainService.Domains;
 
             InitializeComponent();
 
@@ -39,11 +39,12 @@ namespace ExpertSystem.src.forms
 
         private void btVariableAdd_Click(object sender, EventArgs e)
         {
-            DomainForm domainForm = new DomainForm();
+            DomainForm domainForm = new DomainForm(domainService);
             if (domainForm.ShowDialog(this) == DialogResult.OK)
             {
-                this.Domains.Add(domainForm.Domain);
-                lvDomains.Items.Add(new ListViewItem(new[] { (lvDomains.Items.Count + 1).ToString(), domainForm.Domain.Name, domainForm.Domain.Type }));
+                domainService.AddDomain(domainForm.Domain);
+
+                FillData();
             }
 
             domainForm.Dispose();
@@ -54,7 +55,7 @@ namespace ExpertSystem.src.forms
             if (lvDomains.SelectedIndices.Count == 1)
             {
                 Domain selectedDomain = Domains[lvDomains.SelectedIndices[0]];
-                DomainForm domainForm = new DomainForm(selectedDomain);
+                DomainForm domainForm = new DomainForm(selectedDomain, domainService);
                 if (domainForm.ShowDialog(this) == DialogResult.OK)
                 {
                     FillData();
@@ -68,9 +69,10 @@ namespace ExpertSystem.src.forms
         {
             foreach (int index in lvDomains.SelectedIndices)
             {
-                Domains.RemoveAt(index);
-                lvDomains.Items.RemoveAt(index);
+                domainService.DeleteDomainByIdx(index);
             }
+
+            FillData();
         }
 
         private void btDomainsSave_Click(object sender, EventArgs e)

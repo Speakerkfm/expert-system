@@ -68,9 +68,9 @@ namespace ExpertSystem.src.forms
 
         private void FillDomainsCb()
         {
-            foreach (Domain domain in domainService.GetDomains())
+            foreach (Domain domain in domainService.Domains)
             {
-                if (domain.Number == selectedDomain?.Number)
+                if (domain == selectedDomain)
                 {
                     continue;
                 }
@@ -101,7 +101,7 @@ namespace ExpertSystem.src.forms
         private void btDomainEdit_Click(object sender, EventArgs e)
         {
             Domain selectedDomain = (Domain)cbDomains.SelectedItem;
-            DomainForm domainForm = new DomainForm(selectedDomain);
+            DomainForm domainForm = new DomainForm(selectedDomain, domainService);
             if (domainForm.ShowDialog(this) == DialogResult.OK)
             {
                 FillValuesLv();
@@ -171,7 +171,7 @@ namespace ExpertSystem.src.forms
 
         private void btDomainAdd_Click(object sender, EventArgs e)
         {
-            DomainForm domainForm = new DomainForm();
+            DomainForm domainForm = new DomainForm(domainService);
             if (domainForm.ShowDialog(this) == DialogResult.OK)
             {
                 this.domainService.AddDomain(domainForm.Domain);
