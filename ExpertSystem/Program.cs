@@ -50,10 +50,10 @@ namespace ExpertSystem
 
             //services
             ExpertSystemService expertSystemService = new ExpertSystemService(dataContainer);
-            VariableService variableService = new VariableService(dataContainer);
-            DomainService domainService = new DomainService(dataContainer);
-            FactService factService = new FactService(dataContainer);
             RuleService ruleService = new RuleService(dataContainer);
+            FactService factService = new FactService(dataContainer, ruleService);
+            VariableService variableService = new VariableService(dataContainer, factService);
+            DomainService domainService = new DomainService(dataContainer, variableService, factService);
 
             dataContainer.ExpertSystem = new CurrentExpertSystem(0, "default");
 

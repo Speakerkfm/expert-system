@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExpertSystem.entity;
 using ExpertSystem.model;
 
 namespace ExpertSystem.src.service
@@ -11,9 +12,14 @@ namespace ExpertSystem.src.service
     {
         private DataContainer dataContainer;
 
-        public DomainService(DataContainer dataContainer)
+        private VariableService variableService;
+        private FactService factService;
+
+        public DomainService(DataContainer dataContainer, VariableService variableService, FactService factService)
         {
             this.dataContainer = dataContainer;
+            this.variableService = variableService;
+            this.factService = factService;
         }
 
         public List<Domain> Domains
@@ -29,7 +35,13 @@ namespace ExpertSystem.src.service
 
         public void DeleteDomainByIdx(int index)
         {
-            Domains.RemoveAt(index);
+            Domain deletedDomain = Domains[index];
+
+            foreach (Variable variable in deletedDomain.UsedVariables)
+            {
+                variableService.DeleteVariable(variable);
+            }
+            Domains.Remove(deletedDomain);
 
             for (int i = index; i < Domains.Count; i++)
             {
@@ -39,6 +51,18 @@ namespace ExpertSystem.src.service
 
         public Value GetOrCreateDomainValue(List<Value> values, string val)
         {
+            Value v = GetValue(values, val);
+
+            if (v != null)
+            {
+                return v;
+            }
+
+            return new Value(values.Count + 1, val);
+        }
+
+        public Value GetValue(List<Value> values, string val)
+        {
             foreach (Value value in values)
             {
                 if (value.Val == val)
@@ -47,7 +71,15 @@ namespace ExpertSystem.src.service
                 }
             }
 
-            return new Value(values.Count + 1, val);
+            return null;
+        }
+
+        public void DeleteValue(Value value)
+        {
+            foreach (Fact fact in value.UsedFacts)
+            {
+                factService.DeleteFact(fact);
+            }
         }
     }
 }

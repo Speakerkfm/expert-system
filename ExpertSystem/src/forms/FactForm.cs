@@ -143,6 +143,8 @@ namespace ExpertSystem.src.forms
             this.Fact = this.factService.GetOrCreateFactByVarVal((Variable) cbVariable.SelectedItem,
                     (Value)cbValue.SelectedItem);
             
+            this.Fact.Variable.UsedFacts.Add(this.Fact);
+            this.Fact.Value.UsedFacts.Add(this.Fact);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

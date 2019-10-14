@@ -16,14 +16,30 @@ namespace ExpertSystem.src.service
             this.dataContainer = dataContainer;
         }
 
-        public List<Rule> GetRules()
+        public List<Rule> Rules
         {
-            return dataContainer.ExpertSystem?.Rules;
+            get { return dataContainer.ExpertSystem?.Rules; }
         }
 
         public void AddRule(Rule rule)
         {
             this.dataContainer.ExpertSystem.Rules.Add(rule);
+        }
+
+        public void DeleteRuleByIdx(int index)
+        {
+            Rule deletedRule = Rules[index];
+            Rules?.Remove(deletedRule);
+        }
+
+        public void DeleteRule(Rule rule)
+        {
+            int index = Rules.IndexOf(rule);
+
+            if (index != -1)
+            {
+                DeleteRuleByIdx(Rules.IndexOf(rule));
+            }
         }
     }
 }

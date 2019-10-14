@@ -12,19 +12,22 @@ namespace ExpertSystem.src.service
     {
         private DataContainer dataContainer;
 
-        public FactService(DataContainer dataContainer)
+        private RuleService ruleService;
+
+        public FactService(DataContainer dataContainer, RuleService ruleService)
         {
             this.dataContainer = dataContainer;
+            this.ruleService = ruleService;
         }
 
-        public List<Fact> GetFacts()
+        public List<Fact> Facts
         {
-            return dataContainer.ExpertSystem?.Facts;
+            get { return dataContainer.ExpertSystem?.Facts; }
         }
 
         public Fact GetOrCreateFactByVarVal(Variable variable, Value value)
         {
-            foreach (Fact fact in GetFacts())
+            foreach (Fact fact in Facts)
             {
                 if (fact.Variable == variable && fact.Value == value)
                 {
@@ -33,6 +36,33 @@ namespace ExpertSystem.src.service
             }
 
             return new Fact(variable, value);
+        }
+
+        public void AddFact(Fact fact)
+        {
+            this.dataContainer.ExpertSystem.Facts?.Add(fact);
+        }
+
+        public void DeleteFactByIdx(int index)
+        {
+            Fact deletedFact = Facts[index];
+
+            foreach (Rule rule in deletedFact.UsedRules)
+            {
+                ruleService.DeleteRule(rule);
+            }
+
+            Facts?.Remove(deletedFact);
+        }
+
+        public void DeleteFact(Fact fact)
+        {
+            int index = Facts.IndexOf(fact);
+
+            if (index != -1)
+            {
+                DeleteFactByIdx(Facts.IndexOf(fact));
+            }
         }
     }
 }

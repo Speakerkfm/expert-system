@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExpertSystem.entity;
 using ExpertSystem.model;
 
 namespace ExpertSystem.model
@@ -22,9 +23,11 @@ namespace ExpertSystem.model
         
         public Domain Domain { get; set; }
 
+        public List<Fact> UsedFacts { get; set; }
+
         public Variable()
         {
-
+            this.UsedFacts = new List<Fact>();
         }
 
         public Variable(int id, string name, int number, string type, int domainId)
@@ -34,6 +37,7 @@ namespace ExpertSystem.model
             this.Number = number;
             this.Type = type;
             this.DomainId = domainId;
+            this.UsedFacts = new List<Fact>();
         }
 
         public override string ToString()

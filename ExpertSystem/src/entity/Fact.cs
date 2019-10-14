@@ -14,15 +14,18 @@ namespace ExpertSystem.entity
         public Variable Variable { get; set; }
         public Value Value { get; set; }
 
+        public List<Rule> UsedRules { get; set; }
+
         public Fact()
         {
-
+            this.UsedRules = new List<Rule>();
         }
 
         public Fact(Variable variable, Value value)
         {
             this.Variable = variable;
             this.Value = value;
+            this.UsedRules = new List<Rule>();
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExpertSystem.entity;
 using ExpertSystem.model;
 
 namespace ExpertSystem.src.service
@@ -11,9 +12,12 @@ namespace ExpertSystem.src.service
     {
         private DataContainer dataContainer;
 
-        public VariableService(DataContainer dataContainer)
+        private FactService factService;
+
+        public VariableService(DataContainer dataContainer, FactService factService)
         {
             this.dataContainer = dataContainer;
+            this.factService = factService;
         }
 
         public List<Variable> Variables
@@ -32,11 +36,27 @@ namespace ExpertSystem.src.service
 
         public void DeleteVariableByIdx(int index)
         {
+            Variable deletedVariable = Variables[index];
+
+            foreach (Fact fact in deletedVariable.UsedFacts)
+            {
+                factService.DeleteFact(fact);
+            }
             Variables.RemoveAt(index);
 
             for (int i = index; i < Variables.Count; i++)
             {
                 Variables[i].Number = index + 1;
+            }
+        }
+
+        public void DeleteVariable(Variable variable)
+        {
+            int index = Variables.IndexOf(variable);
+
+            if (index != -1)
+            {
+                DeleteVariableByIdx(index);
             }
         }
     }

@@ -95,6 +95,16 @@ namespace ExpertSystem.src.forms
             this.Rule.Name = tbRuleName.Text;
             this.Rule.Conditions = this.conditions;
             this.Rule.Conclusions = this.conclusions;
+            foreach (Fact condition in this.Rule.Conditions)
+            {
+                factService.AddFact(condition);
+                condition.UsedRules.Add(this.Rule);
+            }
+            foreach (Fact conclusion in this.Rule.Conclusions)
+            {
+                factService.AddFact(conclusion);
+                conclusion.UsedRules.Add(this.Rule);
+            }
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

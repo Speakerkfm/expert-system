@@ -159,6 +159,7 @@ namespace ExpertSystem.src.forms
             }
 
             this.Variable.Domain = selectedDomain;
+            selectedDomain.UsedVariables.Add(this.Variable);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

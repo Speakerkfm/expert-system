@@ -86,6 +86,8 @@ namespace ExpertSystem
             }
 
             variablesEditor.Dispose();
+
+            FillRulesLv();
         }
 
         private void domainsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -97,6 +99,8 @@ namespace ExpertSystem
             }
 
             domainEditor.Dispose();
+
+            FillRulesLv();
         }
 
         private void btRuleAdd_Click(object sender, EventArgs e)
@@ -131,7 +135,7 @@ namespace ExpertSystem
         {
             foreach (int index in lvRules.SelectedIndices)
             {
-                this.expertSystem.Rules.RemoveAt(index);
+                this._ruleService.DeleteRuleByIdx(index);
                 lvRules.Items.RemoveAt(index);
             }
         }

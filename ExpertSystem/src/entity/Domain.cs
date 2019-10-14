@@ -21,9 +21,12 @@ namespace ExpertSystem.model
             set { values = value; }
         }
 
+        public List<Variable> UsedVariables { get; set; }
+
         public Domain()
         {
             this.values = new List<Value>();
+            this.UsedVariables = new List<Variable>();
         }
 
         public Domain(int id, string name, string type, int number)

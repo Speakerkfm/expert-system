@@ -16,7 +16,9 @@ namespace ExpertSystem.src.forms
     {
         public Domain Domain { get; set; }
 
-        private List<Value> values; 
+        private List<Value> values;
+        private List<Value> deletedValues;
+        private List<Value> addedValues;
 
         private DomainService domainService;
 
@@ -26,6 +28,8 @@ namespace ExpertSystem.src.forms
 
             this.domainService = domainService;
             this.values = new List<Value>();
+            this.deletedValues = new List<Value>();
+            this.addedValues = new List<Value>();
         }
 
         public DomainForm(Domain domain, DomainService domainService)
@@ -35,6 +39,8 @@ namespace ExpertSystem.src.forms
             this.Domain = domain;
             this.domainService = domainService;
             this.values = new List<Value>();
+            this.deletedValues = new List<Value>();
+            this.addedValues = new List<Value>();
 
             foreach (Value value in domain.Values)
             {
@@ -54,7 +60,9 @@ namespace ExpertSystem.src.forms
 
         private void FillValuesLv()
         {
-            foreach (Value value in Domain.Values)
+            lvValues.Items.Clear();
+
+            foreach (Value value in this.values)
             {
                 lvValues.Items.Add(new ListViewItem(new[] { (lvValues.Items.Count + 1).ToString(), value.Val }));
             }
@@ -68,11 +76,14 @@ namespace ExpertSystem.src.forms
             }
             this.Domain.Name = tbDomainName.Text;
             this.Domain.Type = cbDomainType.Text;
-            this.Domain.Values.Clear();
-            foreach (ListViewItem lvValuesItem in lvValues.Items)
+            foreach (Value value in this.deletedValues)
             {
-                Value newValue = domainService.GetOrCreateDomainValue(this.values, lvValuesItem.SubItems[1].Text);
-                Domain.Values.Add(newValue);
+                this.Domain.Values.Remove(value);
+                this.domainService.DeleteValue(value);
+            }
+            foreach (Value value in this.addedValues)
+            {
+                this.Domain.Values.Add(value);
             }
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -80,7 +91,20 @@ namespace ExpertSystem.src.forms
 
         private void btValueAdd_Click(object sender, EventArgs e)
         {
-            lvValues.Items.Add(new ListViewItem(new[] { (lvValues.Items.Count + 1).ToString(), tbNewValue.Text}));
+            Value existValue = domainService.GetValue(this.values, tbNewValue.Text);
+            if (existValue != null)
+            {
+                MessageBox.Show("Value already exist");
+                return;
+            }
+
+            Value newValue = domainService.GetOrCreateDomainValue(this.Domain.Values, tbNewValue.Text);
+            newValue.Number = this.values.Count + 1;
+            this.values.Add(newValue);
+            this.addedValues.Add(newValue);
+            this.deletedValues.Remove(newValue);
+
+            FillValuesLv();
             tbNewValue.Text = "";
         }
 
@@ -88,12 +112,16 @@ namespace ExpertSystem.src.forms
         {
             foreach (int index in lvValues.SelectedIndices)
             {
-                lvValues.Items.RemoveAt(index);
+                this.deletedValues.Add(this.values[index]);
+                this.addedValues.Remove(this.values[index]);
+                this.values.RemoveAt(index);
 
-                for (int i = index; i < lvValues.Items.Count; i++)
+                for (int i = index; i < this.values.Count; i++)
                 {
-                    lvValues.Items[i].SubItems[0].Text = (i + 1).ToString();
+                    this.values[i].Number = i + 1;
                 }
+
+                FillData();
             }
         }
 
