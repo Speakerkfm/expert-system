@@ -84,6 +84,7 @@
             this.Variable,
             this.Value});
             this.lvConditions.FullRowSelect = true;
+            this.lvConditions.GridLines = true;
             this.lvConditions.Location = new System.Drawing.Point(12, 200);
             this.lvConditions.Name = "lvConditions";
             this.lvConditions.Size = new System.Drawing.Size(528, 404);
@@ -137,6 +138,7 @@
             this.ConclusionVariable,
             this.ConclusionValue});
             this.lvConclusions.FullRowSelect = true;
+            this.lvConclusions.GridLines = true;
             this.lvConclusions.Location = new System.Drawing.Point(577, 200);
             this.lvConclusions.Name = "lvConclusions";
             this.lvConclusions.Size = new System.Drawing.Size(524, 404);

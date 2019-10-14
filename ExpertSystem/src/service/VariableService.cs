@@ -46,7 +46,7 @@ namespace ExpertSystem.src.service
 
             for (int i = index; i < Variables.Count; i++)
             {
-                Variables[i].Number = index + 1;
+                Variables[i].Number = i + 1;
             }
         }
 
@@ -66,6 +66,19 @@ namespace ExpertSystem.src.service
             {
                 factService.DeleteFact(fact);
             }
+        }
+
+        public Variable GetVariableByName(string name)
+        {
+            foreach (Variable variable in Variables)
+            {
+                if (variable.Name == name)
+                {
+                    return variable;
+                }
+            }
+
+            return null;
         }
     }
 }

@@ -87,6 +87,7 @@
             this.Type,
             this.DomainName});
             this.lvVariables.FullRowSelect = true;
+            this.lvVariables.GridLines = true;
             this.lvVariables.Location = new System.Drawing.Point(21, 79);
             this.lvVariables.Name = "lvVariables";
             this.lvVariables.Size = new System.Drawing.Size(918, 404);

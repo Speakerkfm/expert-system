@@ -85,6 +85,7 @@
             this.DomainName,
             this.Type});
             this.lvDomains.FullRowSelect = true;
+            this.lvDomains.GridLines = true;
             this.lvDomains.Location = new System.Drawing.Point(13, 101);
             this.lvDomains.Name = "lvDomains";
             this.lvDomains.Size = new System.Drawing.Size(756, 379);

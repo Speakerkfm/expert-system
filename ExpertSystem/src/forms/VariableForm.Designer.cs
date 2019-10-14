@@ -175,6 +175,7 @@
             this.Number,
             this.Value});
             this.lvValues.FullRowSelect = true;
+            this.lvValues.GridLines = true;
             this.lvValues.Location = new System.Drawing.Point(155, 408);
             this.lvValues.Name = "lvValues";
             this.lvValues.Size = new System.Drawing.Size(352, 183);

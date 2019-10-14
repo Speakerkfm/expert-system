@@ -124,7 +124,10 @@ namespace ExpertSystem
                 RuleForm ruleEditor = new RuleForm(selectedRule, _ruleService, _variableService, _factService,
                     _domainService);
 
-                ruleEditor.ShowDialog();
+                if (ruleEditor.ShowDialog() == DialogResult.OK && !this.expertSystem.Rules.Contains(selectedRule))
+                {
+                    this._ruleService.AddRule(ruleEditor.Rule);
+                }
 
                 ruleEditor.Dispose();
 

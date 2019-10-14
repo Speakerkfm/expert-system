@@ -146,6 +146,13 @@ namespace ExpertSystem.src.forms
         {
             if (this.Variable == null)
             {
+                Variable v = variableService.GetVariableByName(tbVariableName.Text);
+                if (v != null)
+                {
+                    MessageBox.Show("Variable name must be unique");
+                    return;
+                }
+
                 this.Variable = new Variable();
             }
 

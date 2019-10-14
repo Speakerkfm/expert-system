@@ -76,7 +76,7 @@
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.expertSystemToolStripCreateES});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(173, 38);
             this.newToolStripMenuItem.Text = "New";
             // 
             // expertSystemToolStripCreateES
@@ -92,20 +92,20 @@
             this.expertSystemToolStripMenuItem,
             this.fromFileToolStripMenuItem});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(173, 38);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // expertSystemToolStripMenuItem
             // 
             this.expertSystemToolStripMenuItem.Name = "expertSystemToolStripMenuItem";
-            this.expertSystemToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.expertSystemToolStripMenuItem.Size = new System.Drawing.Size(267, 38);
             this.expertSystemToolStripMenuItem.Text = "from database";
             this.expertSystemToolStripMenuItem.Click += new System.EventHandler(this.expertSystemToolStripMenuItem_Click);
             // 
             // fromFileToolStripMenuItem
             // 
             this.fromFileToolStripMenuItem.Name = "fromFileToolStripMenuItem";
-            this.fromFileToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.fromFileToolStripMenuItem.Size = new System.Drawing.Size(267, 38);
             this.fromFileToolStripMenuItem.Text = "from file";
             this.fromFileToolStripMenuItem.Click += new System.EventHandler(this.fromFileToolStripMenuItem_Click);
             // 
@@ -114,7 +114,7 @@
             this.saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem1});
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(173, 38);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // fileToolStripMenuItem1
@@ -153,6 +153,7 @@
             this.RuleName,
             this.Rule});
             this.lvRules.FullRowSelect = true;
+            this.lvRules.GridLines = true;
             this.lvRules.Location = new System.Drawing.Point(12, 127);
             this.lvRules.Name = "lvRules";
             this.lvRules.Size = new System.Drawing.Size(1046, 404);
