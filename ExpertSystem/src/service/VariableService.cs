@@ -59,5 +59,13 @@ namespace ExpertSystem.src.service
                 DeleteVariableByIdx(index);
             }
         }
+
+        public void DeleteFactsByVariable(Variable variable)
+        {
+            foreach (Fact fact in variable.UsedFacts)
+            {
+                factService.DeleteFact(fact);
+            }
+        }
     }
 }

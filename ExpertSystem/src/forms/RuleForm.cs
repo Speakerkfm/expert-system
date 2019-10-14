@@ -138,12 +138,12 @@ namespace ExpertSystem.src.forms
                 FactForm factEditor = new FactForm(selectedCondition, this.variableService, this.factService, this.domainService, FactType.Condition);
                 if (factEditor.ShowDialog(this) == DialogResult.OK)
                 {
-                    this.conditions.RemoveAt(lvConditions.SelectedIndices[0]);
-                    this.conditions.Add(factEditor.Fact);
-                    FillConditionsLv();
+                    this.conditions[lvConditions.SelectedIndices[0]] = factEditor.Fact;
                 }
 
                 factEditor.Dispose();
+                
+                FillConditionsLv();
             }
         }
 
@@ -176,12 +176,12 @@ namespace ExpertSystem.src.forms
                 FactForm factEditor = new FactForm(selectedConclusion, this.variableService, this.factService, this.domainService, FactType.Condition);
                 if (factEditor.ShowDialog(this) == DialogResult.OK)
                 {
-                    this.conclusions.RemoveAt(lvConclusions.SelectedIndices[0]);
-                    this.conclusions.Add(factEditor.Fact);
-                    FillConclusionsLv();
+                    this.conclusions[lvConclusions.SelectedIndices[0]] = factEditor.Fact;
                 }
 
                 factEditor.Dispose();
+
+                FillConclusionsLv();
             }
         }
 

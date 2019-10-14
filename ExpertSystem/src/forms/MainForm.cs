@@ -70,11 +70,11 @@ namespace ExpertSystem
             if (expertSystemSelector.ShowDialog() == DialogResult.OK)
             {
                 this.expertSystem = _expertSystemService.GetCurrentExpertSystem();
-
-                FillRulesLv();
             }
 
             expertSystemSelector.Dispose();
+
+            FillRulesLv();
         }
 
         private void variablesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,10 +109,11 @@ namespace ExpertSystem
             if (ruleEditor.ShowDialog() == DialogResult.OK)
             {
                 this._ruleService.AddRule(ruleEditor.Rule);
-                lvRules.Items.Add(new ListViewItem(new[] { ruleEditor.Rule.Name, ruleEditor.Rule.ToString() }));
             }
 
             ruleEditor.Dispose();
+
+            FillRulesLv();
         }
 
         private void btRuleEdit_Click(object sender, EventArgs e)
@@ -122,12 +123,12 @@ namespace ExpertSystem
                 Rule selectedRule = this.expertSystem.Rules[lvRules.SelectedIndices[0]];
                 RuleForm ruleEditor = new RuleForm(selectedRule, _ruleService, _variableService, _factService,
                     _domainService);
-                if (ruleEditor.ShowDialog() == DialogResult.OK)
-                {
-                    FillRulesLv();
-                }
+
+                ruleEditor.ShowDialog();
 
                 ruleEditor.Dispose();
+
+                FillRulesLv();
             }
         }
         

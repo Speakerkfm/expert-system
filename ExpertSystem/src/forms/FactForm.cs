@@ -140,6 +140,12 @@ namespace ExpertSystem.src.forms
 
         private void btOk_Click(object sender, EventArgs e)
         {
+            if (cbVariable.SelectedItem == null || cbValue.SelectedItem == null)
+            {
+                MessageBox.Show("Incorrect rule");
+                return;
+            }
+
             this.Fact = this.factService.GetOrCreateFactByVarVal((Variable) cbVariable.SelectedItem,
                     (Value)cbValue.SelectedItem);
             
@@ -167,7 +173,7 @@ namespace ExpertSystem.src.forms
 
         private void btVariableAdd_Click(object sender, EventArgs e)
         {
-            VariableForm variableForm = new VariableForm(domainService);
+            VariableForm variableForm = new VariableForm(domainService, variableService);
             if (variableForm.ShowDialog(this) == DialogResult.OK)
             {
                 this.variableService.AddVariable(variableForm.Variable);
@@ -180,14 +186,14 @@ namespace ExpertSystem.src.forms
         private void btVariableEdit_Click(object sender, EventArgs e)
         {
             Variable selectedVariable = (Variable) cbVariable.SelectedItem;
-            VariableForm variableForm = new VariableForm(selectedVariable, domainService);
-            if (variableForm.ShowDialog(this) == DialogResult.OK)
-            {
-                cbValue.Items.Clear();
-                FillValueCb();
-            }
+            VariableForm variableForm = new VariableForm(selectedVariable, domainService, variableService);
+            variableForm.ShowDialog(this);
 
             variableForm.Dispose();
+
+            cbValue.Items.Clear();
+            selectedValue = null;
+            FillValueCb();
         }
     }
 }

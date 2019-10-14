@@ -26,6 +26,7 @@ namespace ExpertSystem.src.forms
         {
             InitializeComponent();
 
+            this.Domain = new Domain();
             this.domainService = domainService;
             this.values = new List<Value>();
             this.deletedValues = new List<Value>();
@@ -70,10 +71,6 @@ namespace ExpertSystem.src.forms
         
         private void btOk_Click(object sender, EventArgs e)
         {
-            if (this.Domain == null)
-            {
-                this.Domain = new Domain();
-            }
             this.Domain.Name = tbDomainName.Text;
             this.Domain.Type = cbDomainType.Text;
             foreach (Value value in this.deletedValues)
@@ -129,6 +126,23 @@ namespace ExpertSystem.src.forms
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void lvValues_DragDrop(object sender, DragEventArgs e)
+        {
+            lvValues.Items.Add(e.Data.ToString());
+            
+        }
+
+        private void lvValues_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+            MessageBox.Show("Drag");
+        }
+
+        private void DomainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -38,9 +38,9 @@
             this.tbDomainName = new System.Windows.Forms.TextBox();
             this.btValueDelete = new System.Windows.Forms.Button();
             this.lvValues = new System.Windows.Forms.ListView();
-            this.tbNewValue = new System.Windows.Forms.TextBox();
             this.Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Value = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tbNewValue = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btCancel
@@ -129,6 +129,7 @@
             // 
             // lvValues
             // 
+            this.lvValues.AllowDrop = true;
             this.lvValues.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Number,
             this.Value});
@@ -139,13 +140,8 @@
             this.lvValues.TabIndex = 28;
             this.lvValues.UseCompatibleStateImageBehavior = false;
             this.lvValues.View = System.Windows.Forms.View.Details;
-            // 
-            // tbNewValue
-            // 
-            this.tbNewValue.Location = new System.Drawing.Point(161, 362);
-            this.tbNewValue.Name = "tbNewValue";
-            this.tbNewValue.Size = new System.Drawing.Size(352, 31);
-            this.tbNewValue.TabIndex = 29;
+            this.lvValues.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvValues_DragDrop);
+            this.lvValues.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvValues_DragEnter);
             // 
             // Number
             // 
@@ -154,6 +150,13 @@
             // Value
             // 
             this.Value.Text = "Value";
+            // 
+            // tbNewValue
+            // 
+            this.tbNewValue.Location = new System.Drawing.Point(161, 362);
+            this.tbNewValue.Name = "tbNewValue";
+            this.tbNewValue.Size = new System.Drawing.Size(352, 31);
+            this.tbNewValue.TabIndex = 29;
             // 
             // DomainForm
             // 
@@ -174,6 +177,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "DomainForm";
             this.Text = "DomainForm";
+            this.Load += new System.EventHandler(this.DomainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

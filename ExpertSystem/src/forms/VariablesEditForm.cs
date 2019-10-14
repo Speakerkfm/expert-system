@@ -53,7 +53,7 @@ namespace ExpertSystem.src.forms
 
         private void btVariableAdd_Click(object sender, EventArgs e)
         {
-            VariableForm variableForm = new VariableForm(domainService);
+            VariableForm variableForm = new VariableForm(domainService, variableService);
             if (variableForm.ShowDialog(this) == DialogResult.OK)
             {
                 variableService.AddVariable(variableForm.Variable);
@@ -69,7 +69,7 @@ namespace ExpertSystem.src.forms
             if (lvVariables.SelectedIndices.Count == 1)
             {
                 Variable selectedVariable = Variables[lvVariables.SelectedIndices[0]];
-                VariableForm variableForm = new VariableForm(selectedVariable, domainService);
+                VariableForm variableForm = new VariableForm(selectedVariable, domainService, variableService);
                 if (variableForm.ShowDialog(this) == DialogResult.OK)
                 {
                     FillData();

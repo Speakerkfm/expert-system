@@ -17,21 +17,27 @@ namespace ExpertSystem.src.forms
     internal partial class VariableForm : Form
     {
         private DomainService domainService;
+        private VariableService variableService;
         public Variable Variable { get; set; }
         private Domain selectedDomain;
+        private Domain oldDomain;
 
-        public VariableForm(DomainService domainService)
+        public VariableForm(DomainService domainService, VariableService variableService)
         {
             this.domainService = domainService;
+            this.variableService = variableService;
+            this.selectedDomain = null;
+            this.oldDomain = null;
 
             InitializeComponent();
 
             FillDomainsCb();
         }
 
-        public VariableForm(Variable variable, DomainService domainService)
+        public VariableForm(Variable variable, DomainService domainService, VariableService variableService)
         {
             this.domainService = domainService;
+            this.variableService = variableService;
             this.Variable = variable;
 
             InitializeComponent();
@@ -102,12 +108,11 @@ namespace ExpertSystem.src.forms
         {
             Domain selectedDomain = (Domain)cbDomains.SelectedItem;
             DomainForm domainForm = new DomainForm(selectedDomain, domainService);
-            if (domainForm.ShowDialog(this) == DialogResult.OK)
-            {
-                FillValuesLv();
-            }
+            domainForm.ShowDialog(this);
 
             domainForm.Dispose();
+
+            FillValuesLv();
         }
 
         private void cbDomains_SelectedIndexChanged(object sender, EventArgs e)
@@ -159,7 +164,14 @@ namespace ExpertSystem.src.forms
             }
 
             this.Variable.Domain = selectedDomain;
-            selectedDomain.UsedVariables.Add(this.Variable);
+            if (oldDomain != selectedDomain)
+            {
+                oldDomain?.UsedVariables.Remove(this.Variable);
+                selectedDomain.UsedVariables.Add(this.Variable);
+
+                variableService.DeleteFactsByVariable(this.Variable);
+            }
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
