@@ -28,10 +28,24 @@ namespace ExpertSystem.src.forms
         public void FillData()
         {
             lvRules.Items.Clear();
-            foreach (Fact fact in this.workingMemory.KnownFacts)
+            foreach (WorkingMemoryItem item in this.workingMemory.KnownItems)
             {
-                lvRules.Items.Add(new ListViewItem(new[] { "", fact.Variable.Name, fact.Value.Val }));
+                switch (item.Type)
+                {
+                    case MemoryItemType.Fact:
+                        lvRules.Items.Add(new ListViewItem(new[] { item.Fact.Variable.Name, item.Fact.Value.Val }));
+                        break;
+                    case MemoryItemType.Rule:
+                        lvRules.Items.Add(new ListViewItem(new[] { item.Rule.Name, item.Rule?.ExplainText }));
+                        break;
+                }
             }
+        }
+
+        private void btCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Dispose();
         }
     }
 }

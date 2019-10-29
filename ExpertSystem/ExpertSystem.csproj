@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="src\entity\Fact.cs" />
     <Compile Include="src\entity\WorkingMemory.cs" />
+    <Compile Include="src\entity\WorkingMemoryItem.cs" />
     <Compile Include="src\forms\ConsultForm.cs">
       <SubType>Form</SubType>
     </Compile>

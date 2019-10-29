@@ -33,22 +33,9 @@ namespace ExpertSystem.src.service
             return result;
         }
 
-        public Value GetValueFromMemory(Variable variable)
-        {
-            foreach (Fact fact in memory.KnownFacts)
-            {
-                if (fact.Variable == variable)
-                {
-                    return fact.Value;
-                }
-            }
-
-            return null;
-        }
-
         public Value KnowValue(Variable variable)
         {
-            Value knownValue = GetValueFromMemory(variable);
+            Value knownValue = memory.GetValueFromMemory(variable);
 
             if (knownValue == null)
             {
@@ -56,7 +43,7 @@ namespace ExpertSystem.src.service
                 {
                     case Variable.Requested:
                         knownValue = RequestValue(variable);
-                        memory.KnownFacts.Add(new Fact(variable, knownValue));
+                        memory.KnownItems.Add(new WorkingMemoryItem(new Fact(variable, knownValue)));
                         break;
                     case Variable.Concluded:
                         knownValue = ConsultUser(variable);
@@ -66,7 +53,7 @@ namespace ExpertSystem.src.service
                         if (knownValue == null)
                         {
                             knownValue = RequestValue(variable);
-                            memory.KnownFacts.Add(new Fact(variable, knownValue));
+                            memory.KnownItems.Add(new WorkingMemoryItem(new Fact(variable, knownValue)));
                         }
                         break;
                 }
@@ -97,12 +84,13 @@ namespace ExpertSystem.src.service
 
                     for (int j = 0; isTrue && j < rules[i].Conclusions.Count; j++)
                     {
-                        memory.KnownFacts.Add(rules[i].Conclusions[j]);
+                        memory.KnownItems.Add(new WorkingMemoryItem(rules[i].Conclusions[j]));
+                        memory.KnownItems.Add(new WorkingMemoryItem(rules[i]));
                     }
                 }
             }
 
-            return GetValueFromMemory(currentGoal);
+            return memory.GetValueFromMemory(currentGoal);
         }
 
         public Value RequestValue(Variable variable)

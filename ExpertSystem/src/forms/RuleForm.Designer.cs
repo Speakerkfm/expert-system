@@ -46,7 +46,7 @@
             this.tbRuleName = new System.Windows.Forms.TextBox();
             this.btCancel = new System.Windows.Forms.Button();
             this.btOk = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.ExplainText = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -212,13 +212,13 @@
             this.btOk.UseVisualStyleBackColor = true;
             this.btOk.Click += new System.EventHandler(this.btOk_Click);
             // 
-            // richTextBox1
+            // ExplainText
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 588);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(875, 105);
-            this.richTextBox1.TabIndex = 49;
-            this.richTextBox1.Text = "";
+            this.ExplainText.Location = new System.Drawing.Point(12, 588);
+            this.ExplainText.Name = "ExplainText";
+            this.ExplainText.Size = new System.Drawing.Size(875, 105);
+            this.ExplainText.TabIndex = 49;
+            this.ExplainText.Text = "";
             // 
             // label4
             // 
@@ -235,7 +235,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1119, 737);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.ExplainText);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btOk);
             this.Controls.Add(this.tbRuleName);
@@ -278,7 +278,7 @@
         private System.Windows.Forms.TextBox tbRuleName;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Button btOk;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox ExplainText;
         private System.Windows.Forms.Label label4;
     }
 }

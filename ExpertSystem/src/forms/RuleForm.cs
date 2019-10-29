@@ -44,6 +44,7 @@ namespace ExpertSystem.src.forms
             this.factService = factService;
             this.domainService = domainService;
             this.Rule = rule;
+            this.ExplainText.Text = rule.ExplainText;
             this.conclusions = new List<Fact>();
             this.conditions = new List<Fact>();
             foreach (Fact conclusion in rule.Conclusions)
@@ -97,6 +98,7 @@ namespace ExpertSystem.src.forms
             this.Rule.Name = tbRuleName.Text;
             this.Rule.Conditions = this.conditions;
             this.Rule.Conclusions = this.conclusions;
+            this.Rule.ExplainText = this.ExplainText.Text;
             foreach (Fact condition in this.Rule.Conditions)
             {
                 factService.AddFact(condition);
