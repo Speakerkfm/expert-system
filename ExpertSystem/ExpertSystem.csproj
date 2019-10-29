@@ -52,6 +52,12 @@
   <ItemGroup>
     <Compile Include="src\entity\Fact.cs" />
     <Compile Include="src\entity\WorkingMemory.cs" />
+    <Compile Include="src\forms\ConsultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\forms\ConsultForm.Designer.cs">
+      <DependentUpon>ConsultForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\forms\DomainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,11 +82,23 @@
     <Compile Include="src\forms\ExpertSystemSelectForm.Designer.cs">
       <DependentUpon>ExpertSystemSelectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\forms\ExplainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\forms\ExplainForm.Designer.cs">
+      <DependentUpon>ExplainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\forms\FactForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\forms\FactForm.Designer.cs">
       <DependentUpon>FactForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\forms\GoalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\forms\GoalForm.Designer.cs">
+      <DependentUpon>GoalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -113,12 +131,16 @@
     <Compile Include="src\forms\VariablesEditForm.Designer.cs">
       <DependentUpon>VariablesEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\service\ConsultService.cs" />
     <Compile Include="src\service\DomainService.cs" />
     <Compile Include="src\service\ExpertSystemService.cs" />
     <Compile Include="src\service\FactService.cs" />
     <Compile Include="src\service\RuleService.cs" />
     <Compile Include="src\service\VariableService.cs" />
     <Compile Include="src\store\Store.cs" />
+    <EmbeddedResource Include="src\forms\ConsultForm.resx">
+      <DependentUpon>ConsultForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\forms\DomainForm.resx">
       <DependentUpon>DomainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,8 +153,14 @@
     <EmbeddedResource Include="src\forms\ExpertSystemSelectForm.resx">
       <DependentUpon>ExpertSystemSelectForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\forms\ExplainForm.resx">
+      <DependentUpon>ExplainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\forms\FactForm.resx">
       <DependentUpon>FactForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\forms\GoalForm.resx">
+      <DependentUpon>GoalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

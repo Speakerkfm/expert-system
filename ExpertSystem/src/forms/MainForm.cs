@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,15 @@ namespace ExpertSystem
 
         private RuleService _ruleService;
 
-        public MainForm(CurrentExpertSystem expertSystem, ExpertSystemService expertSystemService, VariableService variableService, DomainService domainService, RuleService ruleService, FactService factService)
+        private ConsultService _consultService;
+
+        public MainForm(CurrentExpertSystem expertSystem,
+            ExpertSystemService expertSystemService, 
+            VariableService variableService, 
+            DomainService domainService, 
+            RuleService ruleService, 
+            FactService factService,
+            ConsultService consultService)
         {
             this.expertSystem = expertSystem;
             this._expertSystemService = expertSystemService;
@@ -40,6 +49,7 @@ namespace ExpertSystem
             this._domainService = domainService;
             this._factService = factService;
             this._ruleService = ruleService;
+            this._consultService = consultService;
 
             InitializeComponent();
         }
@@ -105,7 +115,8 @@ namespace ExpertSystem
 
         private void btRuleAdd_Click(object sender, EventArgs e)
         {
-            RuleForm ruleEditor = new RuleForm(_ruleService, _variableService, _factService, _domainService);
+            string ruleName = "Rule " + (lvRules.Items.Count + 1);
+            RuleForm ruleEditor = new RuleForm(ruleName, _ruleService, _variableService, _factService, _domainService);
             if (ruleEditor.ShowDialog() == DialogResult.OK)
             {
                 this._ruleService.AddRule(ruleEditor.Rule);
@@ -164,6 +175,37 @@ namespace ExpertSystem
             }
 
             FillRulesLv();
+        }
+
+        private void setGoalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Variable goal = this.expertSystem.Goal;
+            GoalForm goalEditor = goal == null ? new GoalForm(_variableService) : new GoalForm(goal, _variableService);
+
+            if (goalEditor.ShowDialog() == DialogResult.OK)
+            {
+                this.expertSystem.Goal = goalEditor.Goal;
+            }
+
+            goalEditor.Dispose();
+        }
+
+        private void beginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Value result = _consultService.BeginConsult(_expertSystemService.GetCurrentExpertSystem());
+
+            MessageBox.Show(result?.Val);
+        }
+
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExplainForm explain = new ExplainForm(_expertSystemService.GetCurrentExpertSystem().Memory);
+
+            if (explain.ShowDialog() == DialogResult.OK)
+            {
+            }
+
+            explain.Dispose();
         }
     }
 }

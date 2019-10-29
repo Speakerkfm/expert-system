@@ -44,12 +44,15 @@
             this.Number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Value = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btDomainAdd = new System.Windows.Forms.Button();
+            this.textAsk = new System.Windows.Forms.RichTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.gbType.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbVariableName
             // 
-            this.tbVariableName.Location = new System.Drawing.Point(155, 78);
+            this.tbVariableName.Location = new System.Drawing.Point(153, 78);
             this.tbVariableName.Name = "tbVariableName";
             this.tbVariableName.Size = new System.Drawing.Size(352, 31);
             this.tbVariableName.TabIndex = 0;
@@ -60,7 +63,7 @@
             this.gbType.Controls.Add(this.rbTypeConcludedRequested);
             this.gbType.Controls.Add(this.rbTypeConcluded);
             this.gbType.Controls.Add(this.rbTypeRequested);
-            this.gbType.Location = new System.Drawing.Point(155, 115);
+            this.gbType.Location = new System.Drawing.Point(153, 115);
             this.gbType.Name = "gbType";
             this.gbType.Size = new System.Drawing.Size(352, 189);
             this.gbType.TabIndex = 1;
@@ -87,6 +90,7 @@
             this.rbTypeConcluded.TabIndex = 1;
             this.rbTypeConcluded.Text = "Выводимая";
             this.rbTypeConcluded.UseVisualStyleBackColor = true;
+            this.rbTypeConcluded.CheckedChanged += new System.EventHandler(this.rbTypeConcluded_CheckedChanged);
             // 
             // rbTypeRequested
             // 
@@ -104,7 +108,7 @@
             // 
             this.cbDomains.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDomains.FormattingEnabled = true;
-            this.cbDomains.Location = new System.Drawing.Point(155, 310);
+            this.cbDomains.Location = new System.Drawing.Point(153, 310);
             this.cbDomains.Name = "cbDomains";
             this.cbDomains.Size = new System.Drawing.Size(352, 33);
             this.cbDomains.TabIndex = 2;
@@ -113,7 +117,7 @@
             // btDomainEdit
             // 
             this.btDomainEdit.Enabled = false;
-            this.btDomainEdit.Location = new System.Drawing.Point(432, 349);
+            this.btDomainEdit.Location = new System.Drawing.Point(430, 349);
             this.btDomainEdit.Name = "btDomainEdit";
             this.btDomainEdit.Size = new System.Drawing.Size(75, 52);
             this.btDomainEdit.TabIndex = 3;
@@ -151,7 +155,7 @@
             // 
             // btOk
             // 
-            this.btOk.Location = new System.Drawing.Point(299, 597);
+            this.btOk.Location = new System.Drawing.Point(297, 755);
             this.btOk.Name = "btOk";
             this.btOk.Size = new System.Drawing.Size(101, 63);
             this.btOk.TabIndex = 12;
@@ -161,7 +165,7 @@
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(406, 597);
+            this.btCancel.Location = new System.Drawing.Point(404, 755);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(101, 63);
             this.btCancel.TabIndex = 13;
@@ -176,7 +180,7 @@
             this.Value});
             this.lvValues.FullRowSelect = true;
             this.lvValues.GridLines = true;
-            this.lvValues.Location = new System.Drawing.Point(155, 408);
+            this.lvValues.Location = new System.Drawing.Point(153, 408);
             this.lvValues.Name = "lvValues";
             this.lvValues.Size = new System.Drawing.Size(352, 183);
             this.lvValues.TabIndex = 29;
@@ -195,7 +199,7 @@
             // 
             // btDomainAdd
             // 
-            this.btDomainAdd.Location = new System.Drawing.Point(351, 349);
+            this.btDomainAdd.Location = new System.Drawing.Point(349, 349);
             this.btDomainAdd.Name = "btDomainAdd";
             this.btDomainAdd.Size = new System.Drawing.Size(75, 52);
             this.btDomainAdd.TabIndex = 30;
@@ -203,11 +207,40 @@
             this.btDomainAdd.UseVisualStyleBackColor = true;
             this.btDomainAdd.Click += new System.EventHandler(this.btDomainAdd_Click);
             // 
+            // textAsk
+            // 
+            this.textAsk.Location = new System.Drawing.Point(153, 598);
+            this.textAsk.Name = "textAsk";
+            this.textAsk.Size = new System.Drawing.Size(352, 151);
+            this.textAsk.TabIndex = 31;
+            this.textAsk.Text = "";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(40, 601);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(69, 25);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Текст";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(40, 626);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 25);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "запроса";
+            // 
             // VariableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 685);
+            this.ClientSize = new System.Drawing.Size(548, 842);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textAsk);
             this.Controls.Add(this.btDomainAdd);
             this.Controls.Add(this.lvValues);
             this.Controls.Add(this.btCancel);
@@ -247,5 +280,8 @@
         private System.Windows.Forms.ColumnHeader Number;
         private System.Windows.Forms.ColumnHeader Value;
         private System.Windows.Forms.Button btDomainAdd;
+        private System.Windows.Forms.RichTextBox textAsk;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -19,6 +19,7 @@ namespace ExpertSystem.model
         public string Name { get; set; }
         public int Number { get; set; }
         public string Type { get; set; }
+        public string TextAsk { get; set; }
         public int DomainId { get; set; }
         
         public Domain Domain { get; set; }
@@ -30,12 +31,13 @@ namespace ExpertSystem.model
             this.UsedFacts = new List<Fact>();
         }
 
-        public Variable(int id, string name, int number, string type, int domainId)
+        public Variable(int id, string name, int number, string type, string textAsk, int domainId)
         {
             this.Id = id;
             this.Name = name;
             this.Number = number;
             this.Type = type;
+            this.TextAsk = textAsk;
             this.DomainId = domainId;
             this.UsedFacts = new List<Fact>();
         }

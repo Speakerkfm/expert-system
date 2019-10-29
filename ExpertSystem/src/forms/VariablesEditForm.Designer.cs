@@ -41,7 +41,8 @@
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(771, 489);
+            this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCancel.Location = new System.Drawing.Point(777, 503);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(168, 75);
             this.btCancel.TabIndex = 2;
@@ -51,36 +52,39 @@
             // 
             // btVariableDelete
             // 
-            this.btVariableDelete.Location = new System.Drawing.Point(148, 12);
+            this.btVariableDelete.Location = new System.Drawing.Point(304, 12);
             this.btVariableDelete.Name = "btVariableDelete";
-            this.btVariableDelete.Size = new System.Drawing.Size(57, 61);
+            this.btVariableDelete.Size = new System.Drawing.Size(140, 60);
             this.btVariableDelete.TabIndex = 7;
-            this.btVariableDelete.Text = "-";
+            this.btVariableDelete.Text = "Delete";
             this.btVariableDelete.UseVisualStyleBackColor = true;
             this.btVariableDelete.Click += new System.EventHandler(this.btVariableDelete_Click);
             // 
             // btVariableAdd
             // 
-            this.btVariableAdd.Location = new System.Drawing.Point(21, 12);
+            this.btVariableAdd.Location = new System.Drawing.Point(12, 12);
             this.btVariableAdd.Name = "btVariableAdd";
-            this.btVariableAdd.Size = new System.Drawing.Size(57, 61);
+            this.btVariableAdd.Size = new System.Drawing.Size(140, 60);
             this.btVariableAdd.TabIndex = 6;
-            this.btVariableAdd.Text = "+";
+            this.btVariableAdd.Text = "Add";
             this.btVariableAdd.UseVisualStyleBackColor = true;
             this.btVariableAdd.Click += new System.EventHandler(this.btVariableAdd_Click);
             // 
             // btVariableEdit
             // 
-            this.btVariableEdit.Location = new System.Drawing.Point(84, 12);
+            this.btVariableEdit.Location = new System.Drawing.Point(158, 12);
             this.btVariableEdit.Name = "btVariableEdit";
-            this.btVariableEdit.Size = new System.Drawing.Size(58, 61);
+            this.btVariableEdit.Size = new System.Drawing.Size(140, 60);
             this.btVariableEdit.TabIndex = 8;
-            this.btVariableEdit.Text = "edit";
+            this.btVariableEdit.Text = "Edit";
             this.btVariableEdit.UseVisualStyleBackColor = true;
             this.btVariableEdit.Click += new System.EventHandler(this.btVariableEdit_Click);
             // 
             // lvVariables
             // 
+            this.lvVariables.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvVariables.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Number,
             this.VariableName,
@@ -88,9 +92,9 @@
             this.DomainName});
             this.lvVariables.FullRowSelect = true;
             this.lvVariables.GridLines = true;
-            this.lvVariables.Location = new System.Drawing.Point(21, 79);
+            this.lvVariables.Location = new System.Drawing.Point(12, 78);
             this.lvVariables.Name = "lvVariables";
-            this.lvVariables.Size = new System.Drawing.Size(918, 404);
+            this.lvVariables.Size = new System.Drawing.Size(933, 419);
             this.lvVariables.TabIndex = 30;
             this.lvVariables.UseCompatibleStateImageBehavior = false;
             this.lvVariables.View = System.Windows.Forms.View.Details;

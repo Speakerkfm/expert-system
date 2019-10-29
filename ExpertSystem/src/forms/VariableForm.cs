@@ -64,6 +64,8 @@ namespace ExpertSystem.src.forms
                     break;
             }
 
+            textAsk.Text = Variable.TextAsk;
+
             cbDomains.Items.Add(Variable.Domain);
             cbDomains.SelectedIndex = 0;
             selectedDomain = Variable.Domain;
@@ -179,6 +181,8 @@ namespace ExpertSystem.src.forms
                 variableService.DeleteFactsByVariable(this.Variable);
             }
 
+            this.Variable.TextAsk = textAsk.Text;
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -200,6 +204,11 @@ namespace ExpertSystem.src.forms
             }
 
             domainForm.Dispose();
+        }
+
+        private void rbTypeConcluded_CheckedChanged(object sender, EventArgs e)
+        {
+            textAsk.Enabled = !rbTypeConcluded.Checked;
         }
     }
 }

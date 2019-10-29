@@ -14,6 +14,7 @@ namespace ExpertSystem.model
         public int Id { get; set; }
         public int Number { get; set; }
         public string Name { get; set; }
+        public string ExplainText { get; set; }
         public List<Fact> Conditions { get; set; }
         public List<Fact> Conclusions { get; set; }
 
@@ -50,6 +51,19 @@ namespace ExpertSystem.model
             ruleString += ")";
 
             return ruleString;
+        }
+
+        public bool ProvesTheGoal(Variable goal)
+        {
+            foreach (Fact conclusion in Conclusions)
+            {
+                if (conclusion.Variable == goal)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

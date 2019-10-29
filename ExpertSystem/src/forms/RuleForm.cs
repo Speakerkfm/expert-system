@@ -23,7 +23,7 @@ namespace ExpertSystem.src.forms
         private List<Fact> conditions;
         private List<Fact> conclusions;
 
-        public RuleForm(RuleService ruleService, VariableService variableService, FactService factService, DomainService domainService)
+        public RuleForm(string ruleName, RuleService ruleService, VariableService variableService, FactService factService, DomainService domainService)
         {
             this.ruleService = ruleService;
             this.variableService = variableService;
@@ -33,6 +33,8 @@ namespace ExpertSystem.src.forms
             this.conclusions = new List<Fact>();
 
             InitializeComponent();
+
+            this.tbRuleName.Text = ruleName;
         }
 
         public RuleForm(Rule rule, RuleService ruleService, VariableService variableService, FactService factService, DomainService domainService)

@@ -57,6 +57,8 @@ namespace ExpertSystem
 
             dataContainer.ExpertSystem = new CurrentExpertSystem(0, "default");
 
+            ConsultService consultService = new ConsultService(dataContainer);
+
             //forms
             MainForm mainForm = new MainForm(
                 dataContainer.ExpertSystem, 
@@ -64,7 +66,8 @@ namespace ExpertSystem
                 variableService, 
                 domainService,
                 ruleService,
-                factService);
+                factService,
+                consultService);
 
             Application.Run(mainForm);
 

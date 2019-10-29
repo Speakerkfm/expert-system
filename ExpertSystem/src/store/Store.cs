@@ -187,7 +187,7 @@ namespace ExpertSystem.store
 
             rowReader.Close();
 
-            Variable variable = new Variable(id, name, number, type, domainId);
+            Variable variable = new Variable(id, name, number, type, "", domainId);
             variable.Domain = GetDomainById(domainId);
 
             return variable;
@@ -211,7 +211,7 @@ namespace ExpertSystem.store
                 string type = rowReader[3].ToString();
                 int domainId = int.Parse(rowReader[4].ToString());
 
-                Variable variable = new Variable(id, name, number, type, domainId);
+                Variable variable = new Variable(id, name, number, type, "", domainId);
 
                 variables.Add(variable);
             }
@@ -250,7 +250,7 @@ namespace ExpertSystem.store
             string name = rowReader[6].ToString();
             string type = rowReader[7].ToString();
             int domainId = int.Parse(rowReader[8].ToString());
-            Variable variable = new Variable(variableId, name, number, type, domainId);
+            Variable variable = new Variable(variableId, name, number, type, "", domainId);
 
             rowReader.Close();
 

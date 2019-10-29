@@ -40,12 +40,17 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.variablesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.domainsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setGoalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.beginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lvRules = new System.Windows.Forms.ListView();
             this.RuleName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Rule = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btRuleEdit = new System.Windows.Forms.Button();
             this.btRuleDelete = new System.Windows.Forms.Button();
             this.btRuleAdd = new System.Windows.Forms.Button();
+            this.explainationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.headerMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,10 +59,12 @@
             this.headerMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.headerMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem});
+            this.editToolStripMenuItem,
+            this.consultationToolStripMenuItem,
+            this.explainationToolStripMenuItem});
             this.headerMenu.Location = new System.Drawing.Point(0, 0);
             this.headerMenu.Name = "headerMenu";
-            this.headerMenu.Size = new System.Drawing.Size(1246, 40);
+            this.headerMenu.Size = new System.Drawing.Size(1246, 42);
             this.headerMenu.TabIndex = 0;
             this.headerMenu.Text = "menuStrip1";
             // 
@@ -68,7 +75,7 @@
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 36);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(64, 38);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newToolStripMenuItem
@@ -130,8 +137,8 @@
             this.variablesToolStripMenuItem,
             this.domainsToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(67, 36);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(156, 38);
+            this.editToolStripMenuItem.Text = "Knowledges";
             // 
             // variablesToolStripMenuItem
             // 
@@ -147,16 +154,42 @@
             this.domainsToolStripMenuItem.Text = "Domains";
             this.domainsToolStripMenuItem.Click += new System.EventHandler(this.domainsToolStripMenuItem_Click);
             // 
+            // consultationToolStripMenuItem
+            // 
+            this.consultationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setGoalToolStripMenuItem,
+            this.beginToolStripMenuItem});
+            this.consultationToolStripMenuItem.Name = "consultationToolStripMenuItem";
+            this.consultationToolStripMenuItem.Size = new System.Drawing.Size(162, 38);
+            this.consultationToolStripMenuItem.Text = "Consultation";
+            // 
+            // setGoalToolStripMenuItem
+            // 
+            this.setGoalToolStripMenuItem.Name = "setGoalToolStripMenuItem";
+            this.setGoalToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.setGoalToolStripMenuItem.Text = "Set goal";
+            this.setGoalToolStripMenuItem.Click += new System.EventHandler(this.setGoalToolStripMenuItem_Click);
+            // 
+            // beginToolStripMenuItem
+            // 
+            this.beginToolStripMenuItem.Name = "beginToolStripMenuItem";
+            this.beginToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.beginToolStripMenuItem.Text = "Begin";
+            this.beginToolStripMenuItem.Click += new System.EventHandler(this.beginToolStripMenuItem_Click);
+            // 
             // lvRules
             // 
+            this.lvRules.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvRules.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.RuleName,
             this.Rule});
             this.lvRules.FullRowSelect = true;
             this.lvRules.GridLines = true;
-            this.lvRules.Location = new System.Drawing.Point(12, 127);
+            this.lvRules.Location = new System.Drawing.Point(12, 109);
             this.lvRules.Name = "lvRules";
-            this.lvRules.Size = new System.Drawing.Size(1046, 404);
+            this.lvRules.Size = new System.Drawing.Size(1222, 563);
             this.lvRules.TabIndex = 31;
             this.lvRules.UseCompatibleStateImageBehavior = false;
             this.lvRules.View = System.Windows.Forms.View.Details;
@@ -169,43 +202,58 @@
             // Rule
             // 
             this.Rule.Text = "Rule";
-            this.Rule.Width = 400;
+            this.Rule.Width = 900;
             // 
             // btRuleEdit
             // 
-            this.btRuleEdit.Location = new System.Drawing.Point(937, 60);
+            this.btRuleEdit.Location = new System.Drawing.Point(158, 43);
             this.btRuleEdit.Name = "btRuleEdit";
-            this.btRuleEdit.Size = new System.Drawing.Size(58, 61);
+            this.btRuleEdit.Size = new System.Drawing.Size(140, 60);
             this.btRuleEdit.TabIndex = 34;
-            this.btRuleEdit.Text = "edit";
+            this.btRuleEdit.Text = "Edit";
             this.btRuleEdit.UseVisualStyleBackColor = true;
             this.btRuleEdit.Click += new System.EventHandler(this.btRuleEdit_Click);
             // 
             // btRuleDelete
             // 
-            this.btRuleDelete.Location = new System.Drawing.Point(1001, 60);
+            this.btRuleDelete.Location = new System.Drawing.Point(304, 43);
             this.btRuleDelete.Name = "btRuleDelete";
-            this.btRuleDelete.Size = new System.Drawing.Size(57, 61);
+            this.btRuleDelete.Size = new System.Drawing.Size(140, 60);
             this.btRuleDelete.TabIndex = 33;
-            this.btRuleDelete.Text = "-";
+            this.btRuleDelete.Text = "Delete";
             this.btRuleDelete.UseVisualStyleBackColor = true;
             this.btRuleDelete.Click += new System.EventHandler(this.btRuleDelete_Click);
             // 
             // btRuleAdd
             // 
-            this.btRuleAdd.Location = new System.Drawing.Point(874, 60);
+            this.btRuleAdd.Location = new System.Drawing.Point(12, 43);
             this.btRuleAdd.Name = "btRuleAdd";
-            this.btRuleAdd.Size = new System.Drawing.Size(57, 61);
+            this.btRuleAdd.Size = new System.Drawing.Size(140, 60);
             this.btRuleAdd.TabIndex = 32;
-            this.btRuleAdd.Text = "+";
+            this.btRuleAdd.Text = "Add";
             this.btRuleAdd.UseVisualStyleBackColor = true;
             this.btRuleAdd.Click += new System.EventHandler(this.btRuleAdd_Click);
+            // 
+            // explainationToolStripMenuItem
+            // 
+            this.explainationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showToolStripMenuItem});
+            this.explainationToolStripMenuItem.Name = "explainationToolStripMenuItem";
+            this.explainationToolStripMenuItem.Size = new System.Drawing.Size(156, 38);
+            this.explainationToolStripMenuItem.Text = "Explaination";
+            // 
+            // showToolStripMenuItem
+            // 
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(268, 38);
+            this.showToolStripMenuItem.Text = "Show";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1246, 819);
+            this.ClientSize = new System.Drawing.Size(1246, 690);
             this.Controls.Add(this.btRuleEdit);
             this.Controls.Add(this.btRuleDelete);
             this.Controls.Add(this.btRuleAdd);
@@ -214,7 +262,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MainMenuStrip = this.headerMenu;
             this.Name = "MainForm";
-            this.Text = "Expert system";
+            this.Text = "ExpertSystemShell";
             this.headerMenu.ResumeLayout(false);
             this.headerMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -242,6 +290,11 @@
         private System.Windows.Forms.ToolStripMenuItem fromFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem consultationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setGoalToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem beginToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem explainationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
     }
 }
 

@@ -90,9 +90,9 @@
             // btVariableEdit
             // 
             this.btVariableEdit.Enabled = false;
-            this.btVariableEdit.Location = new System.Drawing.Point(235, 28);
+            this.btVariableEdit.Location = new System.Drawing.Point(158, 44);
             this.btVariableEdit.Name = "btVariableEdit";
-            this.btVariableEdit.Size = new System.Drawing.Size(58, 61);
+            this.btVariableEdit.Size = new System.Drawing.Size(140, 60);
             this.btVariableEdit.TabIndex = 30;
             this.btVariableEdit.Text = "edit";
             this.btVariableEdit.UseVisualStyleBackColor = true;
@@ -100,9 +100,9 @@
             // 
             // btVariableAdd
             // 
-            this.btVariableAdd.Location = new System.Drawing.Point(172, 28);
+            this.btVariableAdd.Location = new System.Drawing.Point(12, 44);
             this.btVariableAdd.Name = "btVariableAdd";
-            this.btVariableAdd.Size = new System.Drawing.Size(57, 61);
+            this.btVariableAdd.Size = new System.Drawing.Size(140, 60);
             this.btVariableAdd.TabIndex = 28;
             this.btVariableAdd.Text = "+";
             this.btVariableAdd.UseVisualStyleBackColor = true;

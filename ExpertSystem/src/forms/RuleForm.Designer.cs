@@ -46,6 +46,8 @@
             this.tbRuleName = new System.Windows.Forms.TextBox();
             this.btCancel = new System.Windows.Forms.Button();
             this.btOk = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btConditionEdit
@@ -87,7 +89,7 @@
             this.lvConditions.GridLines = true;
             this.lvConditions.Location = new System.Drawing.Point(12, 200);
             this.lvConditions.Name = "lvConditions";
-            this.lvConditions.Size = new System.Drawing.Size(528, 404);
+            this.lvConditions.Size = new System.Drawing.Size(528, 357);
             this.lvConditions.TabIndex = 35;
             this.lvConditions.UseCompatibleStateImageBehavior = false;
             this.lvConditions.View = System.Windows.Forms.View.Details;
@@ -141,7 +143,7 @@
             this.lvConclusions.GridLines = true;
             this.lvConclusions.Location = new System.Drawing.Point(577, 200);
             this.lvConclusions.Name = "lvConclusions";
-            this.lvConclusions.Size = new System.Drawing.Size(524, 404);
+            this.lvConclusions.Size = new System.Drawing.Size(524, 357);
             this.lvConclusions.TabIndex = 39;
             this.lvConclusions.UseCompatibleStateImageBehavior = false;
             this.lvConclusions.View = System.Windows.Forms.View.Details;
@@ -210,11 +212,30 @@
             this.btOk.UseVisualStyleBackColor = true;
             this.btOk.Click += new System.EventHandler(this.btOk_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(12, 588);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(875, 105);
+            this.richTextBox1.TabIndex = 49;
+            this.richTextBox1.Text = "";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 560);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(96, 25);
+            this.label4.TabIndex = 50;
+            this.label4.Text = "Because";
+            // 
             // RuleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1119, 737);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btOk);
             this.Controls.Add(this.tbRuleName);
@@ -257,5 +278,7 @@
         private System.Windows.Forms.TextBox tbRuleName;
         private System.Windows.Forms.Button btCancel;
         private System.Windows.Forms.Button btOk;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label4;
     }
 }
