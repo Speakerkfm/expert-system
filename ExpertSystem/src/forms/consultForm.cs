@@ -63,8 +63,21 @@ namespace ExpertSystem.src.forms
 
         private void btCancel_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void ConsultForm_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void ConsultForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.DialogResult != DialogResult.OK)
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit the consultation?", "Question", MessageBoxButtons.YesNo);
+
+                e.Cancel = (dialogResult == DialogResult.No);
+            }
         }
     }
 }

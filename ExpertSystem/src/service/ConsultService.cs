@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,14 +25,21 @@ namespace ExpertSystem.src.service
 
         public Value BeginConsult(CurrentExpertSystem expertSystem)
         {
-            dataContainer.ExpertSystem.Memory = new WorkingMemory();
-            this.memory = dataContainer.ExpertSystem.Memory;
-            this.rules = this.dataContainer.ExpertSystem.Rules;
+            try
+            {
+                dataContainer.ExpertSystem.Memory = new WorkingMemory();
+                this.memory = dataContainer.ExpertSystem.Memory;
+                this.rules = this.dataContainer.ExpertSystem.Rules;
 
-            Value result = KnowValue(expertSystem.Goal);
+                Value result = KnowValue(expertSystem.Goal);
 
-            return result;
+                return result;
+            } catch (InvalidDataException e)
+            {
+                return null;
+            }
         }
+    
 
         public Value KnowValue(Variable variable)
         {
@@ -101,6 +109,10 @@ namespace ExpertSystem.src.service
             if (consultator.ShowDialog() == DialogResult.OK)
             {
                 resultValue = consultator.ResultValue;
+            }
+            else
+            {
+                throw new InvalidDataException();
             }
 
             consultator.Dispose();

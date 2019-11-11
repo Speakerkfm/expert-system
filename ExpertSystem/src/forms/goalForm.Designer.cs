@@ -71,6 +71,7 @@
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.btOk);
             this.Controls.Add(this.cbVariable);
+            this.MinimizeBox = false;
             this.Name = "GoalForm";
             this.Text = "goalForm";
             this.ResumeLayout(false);

@@ -35,6 +35,11 @@ namespace ExpertSystem
 
         private ConsultService _consultService;
 
+        private int indexOfItemUnderMouseToDrag;
+        private int indexOfItemUnderMouseToDrop;
+
+        private Rectangle dragBoxFromMouseDown;
+
         public MainForm(CurrentExpertSystem expertSystem,
             ExpertSystemService expertSystemService, 
             VariableService variableService, 
@@ -157,21 +162,34 @@ namespace ExpertSystem
 
         private void fileToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            BinaryFormatter formatter = new BinaryFormatter();
+            Stream myStream;
 
-            using (FileStream fs = new FileStream("es.dat", FileMode.OpenOrCreate))
+            BinaryFormatter formatter = new BinaryFormatter();
+            if (sfDialog.ShowDialog() == DialogResult.OK)
             {
-                formatter.Serialize(fs, expertSystem);
+                if ((myStream = sfDialog.OpenFile()) != null)
+                {
+                    formatter.Serialize(myStream, expertSystem);
+                    // Code to write the stream goes here.
+                    myStream.Close();
+                }
             }
         }
 
         private void fromFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Stream myStream;
+
             BinaryFormatter formatter = new BinaryFormatter();
-            using (FileStream fs = new FileStream("es.dat", FileMode.OpenOrCreate))
+            if (ofDialog.ShowDialog() == DialogResult.OK)
             {
-                this.expertSystem = (CurrentExpertSystem) formatter.Deserialize(fs);
-                this._expertSystemService.SelectExpertSystem(this.expertSystem);
+                if ((myStream = ofDialog.OpenFile()) != null)
+                {
+                    this.expertSystem = (CurrentExpertSystem)formatter.Deserialize(myStream);
+                    this._expertSystemService.SelectExpertSystem(this.expertSystem);
+                    // Code to write the stream goes here.
+                    myStream.Close();
+                }
             }
 
             FillRulesLv();
@@ -194,7 +212,7 @@ namespace ExpertSystem
         {
             Value result = _consultService.BeginConsult(_expertSystemService.GetCurrentExpertSystem());
 
-            MessageBox.Show(result?.Val);
+            MessageBox.Show(result == null ? "I don't know :c" : result.Val);
         }
 
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
@@ -206,6 +224,70 @@ namespace ExpertSystem
             }
 
             explain.Dispose();
+        }
+
+        private void lvRules_DragDrop(object sender, DragEventArgs e)
+        {
+            ListViewItem item = (ListViewItem)e.Data.GetData(typeof(System.Windows.Forms.ListViewItem));
+
+            var p = this.PointToClient(Cursor.Position);
+            int targetIndex = lvRules.GetItemAt(p.X - lvRules.Bounds.X,p.Y - lvRules.Bounds.Y).Index;
+            Rule movingRule = expertSystem.Rules[item.Index];
+            expertSystem.Rules.RemoveAt(item.Index);
+            expertSystem.Rules.Insert(targetIndex, movingRule);
+
+            FillRulesLv();
+        }
+
+        private void lvRules_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void lvRules_MouseDown(object sender, MouseEventArgs e)
+        {
+            indexOfItemUnderMouseToDrag = lvRules.Items.IndexOf(lvRules.GetItemAt(e.X, e.Y));
+
+            if (indexOfItemUnderMouseToDrag != ListBox.NoMatches)
+            {
+                // DragSize  показывает на сколько можно сместить мышку, чтоб произошло событие
+                Size dragSize = SystemInformation.DragSize;
+
+                // Создаем прямоугольник в центре которого расположен курсор
+                dragBoxFromMouseDown = new Rectangle(new Point(e.X - (dragSize.Width / 2),
+                    e.Y - (dragSize.Height / 2)), dragSize);
+            }
+            else
+                // Сбрасываем наш прямоугольник если мышка не на каком-либо элементе в ListView.
+                dragBoxFromMouseDown = Rectangle.Empty;
+        }
+
+        private void lvRules_MouseUp(object sender, MouseEventArgs e)
+        {
+            // Сбросить прямоугольник если кнопка отпущена
+            dragBoxFromMouseDown = Rectangle.Empty;
+        }
+
+        private void lvRules_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                if (dragBoxFromMouseDown != Rectangle.Empty &&
+                    !dragBoxFromMouseDown.Contains(e.X, e.Y))
+                {
+                    lvRules.DoDragDrop(lvRules.Items[indexOfItemUnderMouseToDrag],
+                        DragDropEffects.All);
+                }
+            }
+        }
+
+        private void lvRules_DragOver(object sender, DragEventArgs e)
+        {
+        }
+
+        private void lvRules_DragLeave(object sender, EventArgs e)
+        {
+
         }
     }
 }

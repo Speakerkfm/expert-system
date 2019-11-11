@@ -23,6 +23,16 @@ namespace ExpertSystem.src.forms
         private List<Fact> conditions;
         private List<Fact> conclusions;
 
+        private int indexOfItemUnderMouseToDragCond;
+        private int indexOfItemUnderMouseToDropCond;
+
+        private Rectangle dragBoxFromMouseDownCond;
+
+        private int indexOfItemUnderMouseToDragConcl;
+        private int indexOfItemUnderMouseToDropConcl;
+
+        private Rectangle dragBoxFromMouseDownConcl;
+
         public RuleForm(string ruleName, RuleService ruleService, VariableService variableService, FactService factService, DomainService domainService)
         {
             this.ruleService = ruleService;
@@ -44,7 +54,6 @@ namespace ExpertSystem.src.forms
             this.factService = factService;
             this.domainService = domainService;
             this.Rule = rule;
-            this.ExplainText.Text = rule.ExplainText;
             this.conclusions = new List<Fact>();
             this.conditions = new List<Fact>();
             foreach (Fact conclusion in rule.Conclusions)
@@ -58,6 +67,8 @@ namespace ExpertSystem.src.forms
             }
 
             InitializeComponent();
+
+            this.ExplainText.Text = rule.ExplainText;
 
             FillData();
         }
@@ -193,6 +204,116 @@ namespace ExpertSystem.src.forms
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void lvConditions_DragDrop(object sender, DragEventArgs e)
+        {
+            ListViewItem item = (ListViewItem)e.Data.GetData(typeof(System.Windows.Forms.ListViewItem));
+
+            var p = this.PointToClient(Cursor.Position);
+            int targetIndex = lvConditions.GetItemAt(p.X - lvConditions.Bounds.X, p.Y - lvConditions.Bounds.Y).Index;
+            Fact movingRule = conditions[item.Index];
+            conditions.RemoveAt(item.Index);
+            conditions.Insert(targetIndex, movingRule);
+
+            FillConditionsLv();
+        }
+
+        private void lvConditions_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void lvConditions_MouseDown(object sender, MouseEventArgs e)
+        {
+            indexOfItemUnderMouseToDragCond = lvConditions.Items.IndexOf(lvConditions.GetItemAt(e.X, e.Y));
+
+            if (indexOfItemUnderMouseToDragCond != ListBox.NoMatches)
+            {
+                // DragSize  показывает на сколько можно сместить мышку, чтоб произошло событие
+                Size dragSize = SystemInformation.DragSize;
+
+                // Создаем прямоугольник в центре которого расположен курсор
+                dragBoxFromMouseDownCond = new Rectangle(new Point(e.X - (dragSize.Width / 2),
+                    e.Y - (dragSize.Height / 2)), dragSize);
+            }
+            else
+                // Сбрасываем наш прямоугольник если мышка не на каком-либо элементе в ListView.
+                dragBoxFromMouseDownCond = Rectangle.Empty;
+        }
+
+        private void lvConditions_MouseUp(object sender, MouseEventArgs e)
+        {
+            // Сбросить прямоугольник если кнопка отпущена
+            dragBoxFromMouseDownCond = Rectangle.Empty;
+        }
+
+        private void lvConditions_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                if (dragBoxFromMouseDownCond != Rectangle.Empty &&
+                    !dragBoxFromMouseDownCond.Contains(e.X, e.Y))
+                {
+                    lvConditions.DoDragDrop(lvConditions.Items[indexOfItemUnderMouseToDragCond],
+                        DragDropEffects.All);
+                }
+            }
+        }
+
+        private void lvConclusions_DragDrop(object sender, DragEventArgs e)
+        {
+            ListViewItem item = (ListViewItem)e.Data.GetData(typeof(System.Windows.Forms.ListViewItem));
+
+            var p = this.PointToClient(Cursor.Position);
+            int targetIndex = lvConclusions.GetItemAt(p.X - lvConclusions.Bounds.X, p.Y - lvConclusions.Bounds.Y).Index;
+            Fact movingRule = conclusions[item.Index];
+            conclusions.RemoveAt(item.Index);
+            conclusions.Insert(targetIndex, movingRule);
+
+            FillConclusionsLv();
+        }
+
+        private void lvConclusions_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void lvConclusions_MouseDown(object sender, MouseEventArgs e)
+        {
+            indexOfItemUnderMouseToDragConcl = lvConclusions.Items.IndexOf(lvConclusions.GetItemAt(e.X, e.Y));
+
+            if (indexOfItemUnderMouseToDragConcl != ListBox.NoMatches)
+            {
+                // DragSize  показывает на сколько можно сместить мышку, чтоб произошло событие
+                Size dragSize = SystemInformation.DragSize;
+
+                // Создаем прямоугольник в центре которого расположен курсор
+                dragBoxFromMouseDownConcl = new Rectangle(new Point(e.X - (dragSize.Width / 2),
+                    e.Y - (dragSize.Height / 2)), dragSize);
+            }
+            else
+                // Сбрасываем наш прямоугольник если мышка не на каком-либо элементе в ListView.
+                dragBoxFromMouseDownConcl = Rectangle.Empty;
+        }
+
+        private void lvConclusions_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                if (dragBoxFromMouseDownConcl != Rectangle.Empty &&
+                    !dragBoxFromMouseDownConcl.Contains(e.X, e.Y))
+                {
+                    lvConclusions.DoDragDrop(lvConclusions.Items[indexOfItemUnderMouseToDragConcl],
+                        DragDropEffects.All);
+                }
+            }
+        }
+
+        private void lvConclusions_MouseUp(object sender, MouseEventArgs e)
+        {
+            // Сбросить прямоугольник если кнопка отпущена
+            dragBoxFromMouseDownConcl = Rectangle.Empty;
         }
     }
 }

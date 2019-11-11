@@ -22,6 +22,11 @@ namespace ExpertSystem.src.forms
 
         private DomainService domainService;
 
+        private int indexOfItemUnderMouseToDrag;
+        private int indexOfItemUnderMouseToDrop;
+
+        private Rectangle dragBoxFromMouseDown;
+
         public DomainForm(DomainService domainService)
         {
             InitializeComponent();
@@ -130,17 +135,69 @@ namespace ExpertSystem.src.forms
 
         private void lvValues_DragDrop(object sender, DragEventArgs e)
         {
-            lvValues.Items.Add(e.Data.ToString());
-            
+            ListViewItem item = (ListViewItem)e.Data.GetData(typeof(System.Windows.Forms.ListViewItem));
+
+            var p = this.PointToClient(Cursor.Position);
+            int targetIndex = lvValues.GetItemAt(p.X - lvValues.Bounds.X, p.Y - lvValues.Bounds.Y).Index;
+            Value movingRule = values[item.Index];
+            values.RemoveAt(item.Index);
+            values.Insert(targetIndex, movingRule);
+
+            Value movingVal = Domain.Values[item.Index];
+            Domain.Values.RemoveAt(item.Index);
+            Domain.Values.Insert(targetIndex, movingVal);
+
+            FillValuesLv();
         }
 
         private void lvValues_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Copy;
-            MessageBox.Show("Drag");
         }
 
         private void DomainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lvValues_MouseDown(object sender, MouseEventArgs e)
+        {
+            indexOfItemUnderMouseToDrag = lvValues.Items.IndexOf(lvValues.GetItemAt(e.X, e.Y));
+
+            if (indexOfItemUnderMouseToDrag != ListBox.NoMatches)
+            {
+                // DragSize  показывает на сколько можно сместить мышку, чтоб произошло событие
+                Size dragSize = SystemInformation.DragSize;
+
+                // Создаем прямоугольник в центре которого расположен курсор
+                dragBoxFromMouseDown = new Rectangle(new Point(e.X - (dragSize.Width / 2),
+                    e.Y - (dragSize.Height / 2)), dragSize);
+            }
+            else
+                // Сбрасываем наш прямоугольник если мышка не на каком-либо элементе в ListView.
+                dragBoxFromMouseDown = Rectangle.Empty;
+        }
+
+        private void lvValues_MouseMove(object sender, MouseEventArgs e)
+        {
+            if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
+            {
+                if (dragBoxFromMouseDown != Rectangle.Empty &&
+                    !dragBoxFromMouseDown.Contains(e.X, e.Y))
+                {
+                    lvValues.DoDragDrop(lvValues.Items[indexOfItemUnderMouseToDrag],
+                        DragDropEffects.All);
+                }
+            }
+        }
+
+        private void lvValues_MouseUp(object sender, MouseEventArgs e)
+        {
+            // Сбросить прямоугольник если кнопка отпущена
+            dragBoxFromMouseDown = Rectangle.Empty;
+        }
+
+        private void lvValues_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

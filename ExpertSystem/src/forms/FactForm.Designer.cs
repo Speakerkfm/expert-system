@@ -120,6 +120,7 @@
             this.Controls.Add(this.cbValue);
             this.Controls.Add(this.cbOperation);
             this.Controls.Add(this.cbVariable);
+            this.MaximizeBox = false;
             this.Name = "FactForm";
             this.Text = "FactForm";
             this.Load += new System.EventHandler(this.FactForm_Load);

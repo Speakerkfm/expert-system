@@ -52,7 +52,7 @@
             // 
             // tbVariableName
             // 
-            this.tbVariableName.Location = new System.Drawing.Point(153, 78);
+            this.tbVariableName.Location = new System.Drawing.Point(160, 19);
             this.tbVariableName.Name = "tbVariableName";
             this.tbVariableName.Size = new System.Drawing.Size(352, 31);
             this.tbVariableName.TabIndex = 0;
@@ -63,7 +63,7 @@
             this.gbType.Controls.Add(this.rbTypeConcludedRequested);
             this.gbType.Controls.Add(this.rbTypeConcluded);
             this.gbType.Controls.Add(this.rbTypeRequested);
-            this.gbType.Location = new System.Drawing.Point(153, 115);
+            this.gbType.Location = new System.Drawing.Point(160, 56);
             this.gbType.Name = "gbType";
             this.gbType.Size = new System.Drawing.Size(352, 189);
             this.gbType.TabIndex = 1;
@@ -108,7 +108,7 @@
             // 
             this.cbDomains.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDomains.FormattingEnabled = true;
-            this.cbDomains.Location = new System.Drawing.Point(153, 310);
+            this.cbDomains.Location = new System.Drawing.Point(160, 251);
             this.cbDomains.Name = "cbDomains";
             this.cbDomains.Size = new System.Drawing.Size(352, 33);
             this.cbDomains.TabIndex = 2;
@@ -117,7 +117,7 @@
             // btDomainEdit
             // 
             this.btDomainEdit.Enabled = false;
-            this.btDomainEdit.Location = new System.Drawing.Point(430, 349);
+            this.btDomainEdit.Location = new System.Drawing.Point(437, 304);
             this.btDomainEdit.Name = "btDomainEdit";
             this.btDomainEdit.Size = new System.Drawing.Size(75, 52);
             this.btDomainEdit.TabIndex = 3;
@@ -128,7 +128,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 78);
+            this.label1.Location = new System.Drawing.Point(47, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 25);
             this.label1.TabIndex = 5;
@@ -137,7 +137,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(40, 310);
+            this.label4.Location = new System.Drawing.Point(47, 251);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(79, 25);
             this.label4.TabIndex = 8;
@@ -146,7 +146,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 408);
+            this.label2.Location = new System.Drawing.Point(47, 363);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(107, 25);
             this.label2.TabIndex = 11;
@@ -155,7 +155,7 @@
             // 
             // btOk
             // 
-            this.btOk.Location = new System.Drawing.Point(297, 755);
+            this.btOk.Location = new System.Drawing.Point(304, 715);
             this.btOk.Name = "btOk";
             this.btOk.Size = new System.Drawing.Size(101, 63);
             this.btOk.TabIndex = 12;
@@ -165,7 +165,7 @@
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(404, 755);
+            this.btCancel.Location = new System.Drawing.Point(411, 715);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(101, 63);
             this.btCancel.TabIndex = 13;
@@ -180,7 +180,7 @@
             this.Value});
             this.lvValues.FullRowSelect = true;
             this.lvValues.GridLines = true;
-            this.lvValues.Location = new System.Drawing.Point(153, 408);
+            this.lvValues.Location = new System.Drawing.Point(160, 363);
             this.lvValues.Name = "lvValues";
             this.lvValues.Size = new System.Drawing.Size(352, 183);
             this.lvValues.TabIndex = 29;
@@ -199,7 +199,7 @@
             // 
             // btDomainAdd
             // 
-            this.btDomainAdd.Location = new System.Drawing.Point(349, 349);
+            this.btDomainAdd.Location = new System.Drawing.Point(356, 304);
             this.btDomainAdd.Name = "btDomainAdd";
             this.btDomainAdd.Size = new System.Drawing.Size(75, 52);
             this.btDomainAdd.TabIndex = 30;
@@ -209,7 +209,7 @@
             // 
             // textAsk
             // 
-            this.textAsk.Location = new System.Drawing.Point(153, 598);
+            this.textAsk.Location = new System.Drawing.Point(160, 553);
             this.textAsk.Name = "textAsk";
             this.textAsk.Size = new System.Drawing.Size(352, 151);
             this.textAsk.TabIndex = 31;
@@ -218,7 +218,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 601);
+            this.label3.Location = new System.Drawing.Point(47, 556);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 25);
             this.label3.TabIndex = 32;
@@ -227,7 +227,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(40, 626);
+            this.label5.Location = new System.Drawing.Point(47, 581);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(94, 25);
             this.label5.TabIndex = 33;
@@ -237,7 +237,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 842);
+            this.ClientSize = new System.Drawing.Size(524, 790);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textAsk);
@@ -252,6 +252,9 @@
             this.Controls.Add(this.cbDomains);
             this.Controls.Add(this.gbType);
             this.Controls.Add(this.tbVariableName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "VariableForm";
             this.Text = "VariableForm";
             this.Load += new System.EventHandler(this.VariableForm_Load);

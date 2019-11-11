@@ -82,6 +82,7 @@
             // 
             // lvConditions
             // 
+            this.lvConditions.AllowDrop = true;
             this.lvConditions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Variable,
             this.Value});
@@ -93,6 +94,11 @@
             this.lvConditions.TabIndex = 35;
             this.lvConditions.UseCompatibleStateImageBehavior = false;
             this.lvConditions.View = System.Windows.Forms.View.Details;
+            this.lvConditions.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvConditions_DragDrop);
+            this.lvConditions.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvConditions_DragEnter);
+            this.lvConditions.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvConditions_MouseDown);
+            this.lvConditions.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lvConditions_MouseMove);
+            this.lvConditions.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lvConditions_MouseUp);
             // 
             // Variable
             // 
@@ -136,6 +142,7 @@
             // 
             // lvConclusions
             // 
+            this.lvConclusions.AllowDrop = true;
             this.lvConclusions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ConclusionVariable,
             this.ConclusionValue});
@@ -147,6 +154,11 @@
             this.lvConclusions.TabIndex = 39;
             this.lvConclusions.UseCompatibleStateImageBehavior = false;
             this.lvConclusions.View = System.Windows.Forms.View.Details;
+            this.lvConclusions.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvConclusions_DragDrop);
+            this.lvConclusions.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvConclusions_DragEnter);
+            this.lvConclusions.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvConclusions_MouseDown);
+            this.lvConclusions.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lvConclusions_MouseMove);
+            this.lvConclusions.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lvConclusions_MouseUp);
             // 
             // ConclusionVariable
             // 

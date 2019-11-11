@@ -36,6 +36,9 @@
             // 
             // lvRules
             // 
+            this.lvRules.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvRules.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ItemName,
             this.Value});
@@ -60,6 +63,7 @@
             // 
             // btCancel
             // 
+            this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCancel.Location = new System.Drawing.Point(1150, 504);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(101, 63);
@@ -75,6 +79,7 @@
             this.ClientSize = new System.Drawing.Size(1263, 579);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.lvRules);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ExplainForm";
             this.Text = "ExplainForm";
             this.ResumeLayout(false);

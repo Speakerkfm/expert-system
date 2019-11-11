@@ -77,7 +77,7 @@
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(101, 63);
             this.btCancel.TabIndex = 31;
-            this.btCancel.Text = "Cancel";
+            this.btCancel.Text = "Exit";
             this.btCancel.UseVisualStyleBackColor = true;
             this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
             // 
@@ -95,13 +95,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 642);
+            this.ClientSize = new System.Drawing.Size(571, 629);
             this.Controls.Add(this.btOk);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.lvValues);
             this.Controls.Add(this.TextAsk);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ConsultForm";
             this.Text = "consultForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConsultForm_FormClosing);
+            this.Load += new System.EventHandler(this.ConsultForm_Load);
             this.ResumeLayout(false);
 
         }

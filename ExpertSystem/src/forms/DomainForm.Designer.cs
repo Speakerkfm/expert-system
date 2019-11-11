@@ -45,7 +45,7 @@
             // 
             // btCancel
             // 
-            this.btCancel.Location = new System.Drawing.Point(412, 497);
+            this.btCancel.Location = new System.Drawing.Point(412, 470);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(101, 63);
             this.btCancel.TabIndex = 25;
@@ -55,7 +55,7 @@
             // 
             // btOk
             // 
-            this.btOk.Location = new System.Drawing.Point(305, 497);
+            this.btOk.Location = new System.Drawing.Point(305, 470);
             this.btOk.Name = "btOk";
             this.btOk.Size = new System.Drawing.Size(101, 63);
             this.btOk.TabIndex = 24;
@@ -102,7 +102,7 @@
             // 
             // btValueAdd
             // 
-            this.btValueAdd.Location = new System.Drawing.Point(393, 399);
+            this.btValueAdd.Location = new System.Drawing.Point(393, 409);
             this.btValueAdd.Name = "btValueAdd";
             this.btValueAdd.Size = new System.Drawing.Size(57, 47);
             this.btValueAdd.TabIndex = 17;
@@ -112,14 +112,14 @@
             // 
             // tbDomainName
             // 
-            this.tbDomainName.Location = new System.Drawing.Point(161, 27);
+            this.tbDomainName.Location = new System.Drawing.Point(161, 24);
             this.tbDomainName.Name = "tbDomainName";
             this.tbDomainName.Size = new System.Drawing.Size(352, 31);
             this.tbDomainName.TabIndex = 14;
             // 
             // btValueDelete
             // 
-            this.btValueDelete.Location = new System.Drawing.Point(456, 399);
+            this.btValueDelete.Location = new System.Drawing.Point(456, 409);
             this.btValueDelete.Name = "btValueDelete";
             this.btValueDelete.Size = new System.Drawing.Size(57, 47);
             this.btValueDelete.TabIndex = 27;
@@ -141,8 +141,12 @@
             this.lvValues.TabIndex = 28;
             this.lvValues.UseCompatibleStateImageBehavior = false;
             this.lvValues.View = System.Windows.Forms.View.Details;
+            this.lvValues.SelectedIndexChanged += new System.EventHandler(this.lvValues_SelectedIndexChanged);
             this.lvValues.DragDrop += new System.Windows.Forms.DragEventHandler(this.lvValues_DragDrop);
             this.lvValues.DragEnter += new System.Windows.Forms.DragEventHandler(this.lvValues_DragEnter);
+            this.lvValues.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvValues_MouseDown);
+            this.lvValues.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lvValues_MouseMove);
+            this.lvValues.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lvValues_MouseUp);
             // 
             // Number
             // 
@@ -163,7 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 598);
+            this.ClientSize = new System.Drawing.Size(530, 545);
             this.Controls.Add(this.tbNewValue);
             this.Controls.Add(this.lvValues);
             this.Controls.Add(this.btValueDelete);
@@ -176,6 +180,7 @@
             this.Controls.Add(this.btValueAdd);
             this.Controls.Add(this.tbDomainName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "DomainForm";
             this.Text = "DomainForm";
             this.Load += new System.EventHandler(this.DomainForm_Load);

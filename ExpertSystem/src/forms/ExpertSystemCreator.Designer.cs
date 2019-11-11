@@ -57,6 +57,7 @@
             this.Controls.Add(this.btESCreate);
             this.Controls.Add(this.tbESName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "ExpertSystemCreator";
             this.Text = "ExpertSystemCreator";
             this.Deactivate += new System.EventHandler(this.ExpertSystemCreator_Deactivate);
