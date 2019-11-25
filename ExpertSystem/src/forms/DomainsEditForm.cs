@@ -55,6 +55,17 @@ namespace ExpertSystem.src.forms
             if (lvDomains.SelectedIndices.Count == 1)
             {
                 Domain selectedDomain = Domains[lvDomains.SelectedIndices[0]];
+
+                DialogResult dialogResult = MessageBox.Show("Domain will change! Rules that used this domain will be deleted. Create new domain?", "Question", MessageBoxButtons.YesNoCancel);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    selectedDomain = new Domain();
+                }
+                else if (dialogResult == DialogResult.Cancel)
+                {
+                    return;
+                }
+
                 DomainForm domainForm = new DomainForm(selectedDomain, domainService);
                 if (domainForm.ShowDialog(this) == DialogResult.OK)
                 {

@@ -88,5 +88,10 @@ namespace ExpertSystem.src.forms
 
             FillData();
         }
+
+        private void lvVariables_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

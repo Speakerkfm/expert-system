@@ -52,31 +52,31 @@
             // 
             // btConditionEdit
             // 
-            this.btConditionEdit.Location = new System.Drawing.Point(419, 132);
+            this.btConditionEdit.Location = new System.Drawing.Point(350, 133);
             this.btConditionEdit.Name = "btConditionEdit";
-            this.btConditionEdit.Size = new System.Drawing.Size(58, 61);
+            this.btConditionEdit.Size = new System.Drawing.Size(92, 61);
             this.btConditionEdit.TabIndex = 38;
-            this.btConditionEdit.Text = "edit";
+            this.btConditionEdit.Text = "Edit";
             this.btConditionEdit.UseVisualStyleBackColor = true;
             this.btConditionEdit.Click += new System.EventHandler(this.btConditionEdit_Click);
             // 
             // btConditionDelete
             // 
-            this.btConditionDelete.Location = new System.Drawing.Point(483, 132);
+            this.btConditionDelete.Location = new System.Drawing.Point(448, 133);
             this.btConditionDelete.Name = "btConditionDelete";
-            this.btConditionDelete.Size = new System.Drawing.Size(57, 61);
+            this.btConditionDelete.Size = new System.Drawing.Size(92, 61);
             this.btConditionDelete.TabIndex = 37;
-            this.btConditionDelete.Text = "-";
+            this.btConditionDelete.Text = "Delete";
             this.btConditionDelete.UseVisualStyleBackColor = true;
             this.btConditionDelete.Click += new System.EventHandler(this.btConditionDelete_Click);
             // 
             // btConditionAdd
             // 
-            this.btConditionAdd.Location = new System.Drawing.Point(356, 132);
+            this.btConditionAdd.Location = new System.Drawing.Point(252, 132);
             this.btConditionAdd.Name = "btConditionAdd";
-            this.btConditionAdd.Size = new System.Drawing.Size(57, 61);
+            this.btConditionAdd.Size = new System.Drawing.Size(92, 61);
             this.btConditionAdd.TabIndex = 36;
-            this.btConditionAdd.Text = "+";
+            this.btConditionAdd.Text = "Add";
             this.btConditionAdd.UseVisualStyleBackColor = true;
             this.btConditionAdd.Click += new System.EventHandler(this.btConditionAdd_Click);
             // 
@@ -112,31 +112,31 @@
             // 
             // btConclusionEdit
             // 
-            this.btConclusionEdit.Location = new System.Drawing.Point(980, 133);
+            this.btConclusionEdit.Location = new System.Drawing.Point(911, 132);
             this.btConclusionEdit.Name = "btConclusionEdit";
-            this.btConclusionEdit.Size = new System.Drawing.Size(58, 61);
+            this.btConclusionEdit.Size = new System.Drawing.Size(92, 61);
             this.btConclusionEdit.TabIndex = 42;
-            this.btConclusionEdit.Text = "edit";
+            this.btConclusionEdit.Text = "Edit";
             this.btConclusionEdit.UseVisualStyleBackColor = true;
             this.btConclusionEdit.Click += new System.EventHandler(this.btConclusionEdit_Click);
             // 
             // btConclusionDelete
             // 
-            this.btConclusionDelete.Location = new System.Drawing.Point(1044, 133);
+            this.btConclusionDelete.Location = new System.Drawing.Point(1009, 133);
             this.btConclusionDelete.Name = "btConclusionDelete";
-            this.btConclusionDelete.Size = new System.Drawing.Size(57, 61);
+            this.btConclusionDelete.Size = new System.Drawing.Size(92, 61);
             this.btConclusionDelete.TabIndex = 41;
-            this.btConclusionDelete.Text = "-";
+            this.btConclusionDelete.Text = "Delete";
             this.btConclusionDelete.UseVisualStyleBackColor = true;
             this.btConclusionDelete.Click += new System.EventHandler(this.btConclusionDelete_Click);
             // 
             // btConclusionAdd
             // 
-            this.btConclusionAdd.Location = new System.Drawing.Point(917, 133);
+            this.btConclusionAdd.Location = new System.Drawing.Point(813, 133);
             this.btConclusionAdd.Name = "btConclusionAdd";
-            this.btConclusionAdd.Size = new System.Drawing.Size(57, 61);
+            this.btConclusionAdd.Size = new System.Drawing.Size(92, 61);
             this.btConclusionAdd.TabIndex = 40;
-            this.btConclusionAdd.Text = "+";
+            this.btConclusionAdd.Text = "Add";
             this.btConclusionAdd.UseVisualStyleBackColor = true;
             this.btConclusionAdd.Click += new System.EventHandler(this.btConclusionAdd_Click);
             // 
@@ -263,6 +263,7 @@
             this.Controls.Add(this.btConditionAdd);
             this.Controls.Add(this.lvConditions);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "RuleForm";
             this.Text = "RuleForm";
             this.ResumeLayout(false);

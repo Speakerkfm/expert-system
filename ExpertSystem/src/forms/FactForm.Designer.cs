@@ -94,7 +94,7 @@
             this.btVariableEdit.Name = "btVariableEdit";
             this.btVariableEdit.Size = new System.Drawing.Size(140, 60);
             this.btVariableEdit.TabIndex = 30;
-            this.btVariableEdit.Text = "edit";
+            this.btVariableEdit.Text = "Edit";
             this.btVariableEdit.UseVisualStyleBackColor = true;
             this.btVariableEdit.Click += new System.EventHandler(this.btVariableEdit_Click);
             // 
@@ -104,7 +104,7 @@
             this.btVariableAdd.Name = "btVariableAdd";
             this.btVariableAdd.Size = new System.Drawing.Size(140, 60);
             this.btVariableAdd.TabIndex = 28;
-            this.btVariableAdd.Text = "+";
+            this.btVariableAdd.Text = "Add";
             this.btVariableAdd.UseVisualStyleBackColor = true;
             this.btVariableAdd.Click += new System.EventHandler(this.btVariableAdd_Click);
             // 

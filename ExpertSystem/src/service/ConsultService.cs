@@ -92,8 +92,8 @@ namespace ExpertSystem.src.service
 
                     for (int j = 0; isTrue && j < rules[i].Conclusions.Count; j++)
                     {
-                        memory.KnownItems.Add(new WorkingMemoryItem(rules[i].Conclusions[j]));
-                        memory.KnownItems.Add(new WorkingMemoryItem(rules[i]));
+                        //memory.KnownItems.Add(new WorkingMemoryItem(rules[i]));
+                        memory.KnownItems.Add(new WorkingMemoryItem(rules[i].Conclusions[j], rules[i]));
                     }
                 }
             }

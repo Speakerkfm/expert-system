@@ -109,6 +109,16 @@ namespace ExpertSystem.src.forms
         private void btDomainEdit_Click(object sender, EventArgs e)
         {
             Domain selectedDomain = (Domain)cbDomains.SelectedItem;
+
+            DialogResult dialogResult = MessageBox.Show("Domain will change! Rules that used this domain will be deleted. Create new domain?", "Question", MessageBoxButtons.YesNoCancel);
+            if (dialogResult == DialogResult.Yes)
+            {
+                selectedDomain = new Domain();
+            } else if (dialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
+
             DomainForm domainForm = new DomainForm(selectedDomain, domainService);
             domainForm.ShowDialog(this);
 
@@ -146,6 +156,11 @@ namespace ExpertSystem.src.forms
 
         private void btOk_Click(object sender, EventArgs e)
         {
+            if (this.selectedDomain == null || this.selectedDomain.Values.Count == 0)
+            {
+                MessageBox.Show("Domain is empty!");
+                return;
+            }
             if (this.Variable == null)
             {
                 Variable v = variableService.GetVariableByName(tbVariableName.Text);
@@ -181,7 +196,14 @@ namespace ExpertSystem.src.forms
                 variableService.DeleteFactsByVariable(this.Variable);
             }
 
-            this.Variable.TextAsk = textAsk.Text;
+            if (this.textAsk.Text == "")
+            {
+                this.Variable.TextAsk = this.Variable.Name + "?";
+            }
+            else
+            {
+                this.Variable.TextAsk = textAsk.Text;
+            }
 
             this.DialogResult = DialogResult.OK;
             this.Close();

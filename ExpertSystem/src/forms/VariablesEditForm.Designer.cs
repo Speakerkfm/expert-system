@@ -98,6 +98,7 @@
             this.lvVariables.TabIndex = 30;
             this.lvVariables.UseCompatibleStateImageBehavior = false;
             this.lvVariables.View = System.Windows.Forms.View.Details;
+            this.lvVariables.SelectedIndexChanged += new System.EventHandler(this.lvVariables_SelectedIndexChanged);
             // 
             // Number
             // 

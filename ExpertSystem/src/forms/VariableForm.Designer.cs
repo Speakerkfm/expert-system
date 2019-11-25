@@ -117,11 +117,11 @@
             // btDomainEdit
             // 
             this.btDomainEdit.Enabled = false;
-            this.btDomainEdit.Location = new System.Drawing.Point(437, 304);
+            this.btDomainEdit.Location = new System.Drawing.Point(411, 290);
             this.btDomainEdit.Name = "btDomainEdit";
-            this.btDomainEdit.Size = new System.Drawing.Size(75, 52);
+            this.btDomainEdit.Size = new System.Drawing.Size(101, 52);
             this.btDomainEdit.TabIndex = 3;
-            this.btDomainEdit.Text = "edit";
+            this.btDomainEdit.Text = "Edit";
             this.btDomainEdit.UseVisualStyleBackColor = true;
             this.btDomainEdit.Click += new System.EventHandler(this.btDomainEdit_Click);
             // 
@@ -199,11 +199,11 @@
             // 
             // btDomainAdd
             // 
-            this.btDomainAdd.Location = new System.Drawing.Point(356, 304);
+            this.btDomainAdd.Location = new System.Drawing.Point(304, 290);
             this.btDomainAdd.Name = "btDomainAdd";
-            this.btDomainAdd.Size = new System.Drawing.Size(75, 52);
+            this.btDomainAdd.Size = new System.Drawing.Size(101, 52);
             this.btDomainAdd.TabIndex = 30;
-            this.btDomainAdd.Text = "+";
+            this.btDomainAdd.Text = "Add";
             this.btDomainAdd.UseVisualStyleBackColor = true;
             this.btDomainAdd.Click += new System.EventHandler(this.btDomainAdd_Click);
             // 

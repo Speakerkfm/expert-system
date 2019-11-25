@@ -14,11 +14,20 @@ namespace ExpertSystem.src.entity
         public MemoryItemType Type { get; }
         public Fact Fact { get; }
         public Rule Rule { get; }
+        public Rule KnownFrom { get; }
 
         public WorkingMemoryItem(Fact fact)
         {
             this.Type = MemoryItemType.Fact;
             this.Fact = fact;
+            this.KnownFrom = null;
+        }
+
+        public WorkingMemoryItem(Fact fact, Rule knownFrom)
+        {
+            this.Type = MemoryItemType.Fact;
+            this.Fact = fact;
+            this.KnownFrom = knownFrom;
         }
 
         public WorkingMemoryItem(Rule rule)

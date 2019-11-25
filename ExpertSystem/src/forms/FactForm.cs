@@ -83,6 +83,10 @@ namespace ExpertSystem.src.forms
         {
             foreach (Variable variable in variableService.Variables)
             {
+                if (this.Type == FactType.Conclusion && variable.Type == Variable.Requested)
+                {
+                    continue;
+                }
                 if (variable == selectedVariable)
                 {
                     continue;

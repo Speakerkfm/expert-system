@@ -37,5 +37,18 @@ namespace ExpertSystem.src.entity
 
             return null;
         }
+
+        public WorkingMemoryItem GetFactItem(Variable variable)
+        {
+            foreach (WorkingMemoryItem item in this.KnownItems)
+            {
+                if (item.Type == MemoryItemType.Fact && item.Fact.Variable == variable)
+                {
+                    return item;
+                }
+            }
+
+            return null;
+        }
     }
 }

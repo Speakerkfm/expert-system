@@ -102,11 +102,11 @@
             // 
             // btValueAdd
             // 
-            this.btValueAdd.Location = new System.Drawing.Point(393, 409);
+            this.btValueAdd.Location = new System.Drawing.Point(305, 399);
             this.btValueAdd.Name = "btValueAdd";
-            this.btValueAdd.Size = new System.Drawing.Size(57, 47);
+            this.btValueAdd.Size = new System.Drawing.Size(101, 47);
             this.btValueAdd.TabIndex = 17;
-            this.btValueAdd.Text = "+";
+            this.btValueAdd.Text = "Add";
             this.btValueAdd.UseVisualStyleBackColor = true;
             this.btValueAdd.Click += new System.EventHandler(this.btValueAdd_Click);
             // 
@@ -119,11 +119,11 @@
             // 
             // btValueDelete
             // 
-            this.btValueDelete.Location = new System.Drawing.Point(456, 409);
+            this.btValueDelete.Location = new System.Drawing.Point(412, 399);
             this.btValueDelete.Name = "btValueDelete";
-            this.btValueDelete.Size = new System.Drawing.Size(57, 47);
+            this.btValueDelete.Size = new System.Drawing.Size(101, 47);
             this.btValueDelete.TabIndex = 27;
-            this.btValueDelete.Text = "-";
+            this.btValueDelete.Text = "Delete";
             this.btValueDelete.UseVisualStyleBackColor = true;
             this.btValueDelete.Click += new System.EventHandler(this.btValueDelete_Click);
             // 
